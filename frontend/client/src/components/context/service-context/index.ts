@@ -10,4 +10,4 @@ const {
 export {
     ServiceProvider,
     ServiceConsumer
-}
+};

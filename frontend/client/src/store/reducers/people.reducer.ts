@@ -32,4 +32,4 @@ export const peopleReducer = (state: IPeopleState = initialPeopleState, action: 
         default:
             return state;
     }
-}
+};

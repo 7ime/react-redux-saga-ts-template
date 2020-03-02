@@ -1,4 +1,4 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects'
+import { call, put, all, takeLatest } from 'redux-saga/effects';
 import {
     EPeopleActions,
     fetchHumanErrorAction,
@@ -44,5 +44,5 @@ export default function* peopleSagas() {
     yield all([
         fetchPeopleSaga(),
         fetchHumanSaga()
-    ])
+    ]);
 }

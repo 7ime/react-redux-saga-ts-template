@@ -16,7 +16,7 @@ export interface IFetchPeopleAction {
 export const fetchPeopleAction = (): IFetchPeopleAction => {
     return {
         type: EPeopleActions.FetchPeople
-    }
+    };
 };
 
 export interface IFetchPeopleSuccessAction {
@@ -28,7 +28,7 @@ export const fetchPeopleSuccessAction = (payload: IPeople.Model[]): IFetchPeople
     return {
         type: EPeopleActions.FetchPeopleSuccess,
         payload
-    }
+    };
 };
 
 export interface IFetchPeopleErrorAction {
@@ -38,7 +38,7 @@ export interface IFetchPeopleErrorAction {
 export const fetchPeopleErrorAction = (): IFetchPeopleErrorAction => {
     return {
         type: EPeopleActions.FetchPeopleError
-    }
+    };
 };
 
 type IFetchPeopleActions = IFetchPeopleAction | IFetchPeopleSuccessAction | IFetchPeopleErrorAction;
@@ -52,7 +52,7 @@ export const fetchHumanAction = (id: number): IFetchHumanAction => {
     return {
         type: EPeopleActions.FetchHuman,
         payload: id
-    }
+    };
 };
 
 export interface IFetchHumanSuccessAction {
@@ -64,7 +64,7 @@ export const fetchHumanSuccessAction = (payload: IPeople.Model): IFetchHumanSucc
     return {
         type: EPeopleActions.FetchHumanSuccess,
         payload
-    }
+    };
 };
 
 export interface IFetchHumanErrorAction {
@@ -74,7 +74,7 @@ export interface IFetchHumanErrorAction {
 export const fetchHumanErrorAction = (): IFetchHumanErrorAction => {
     return {
         type: EPeopleActions.FetchHumanError
-    }
+    };
 };
 
 type IFetchHumanActions = IFetchHumanAction | IFetchHumanSuccessAction | IFetchHumanErrorAction;

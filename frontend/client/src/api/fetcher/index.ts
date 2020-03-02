@@ -13,7 +13,7 @@ class Fetcher implements IFetcher{
                 'X-Requested-With': 'XMLHttpRequest'
             },
             responseType: 'json'
-        })
+        });
     }
 
     public get = async(url: string, body: any = {}) => {

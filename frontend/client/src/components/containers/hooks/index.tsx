@@ -18,7 +18,7 @@ const useCustomHooks = () => {
     React.useEffect(() => {
         setTimeout(() => {
             setGender('female');
-        }, 1000)
+        }, 1000);
     }, []);
 
     return gender;
@@ -36,13 +36,12 @@ const Hooks = (props: IProps) => {
 
     React.useEffect(() => {
         setStatus(!status);
-        console.log(peopleByGender)
     }, [count]);
 
     const addedOptionalParametersInUrl = () => {
         const result = qs.parse(history.location.search);
-        history.push(`${history.location.pathname}?pageID=${6}`)
-    }
+        history.push(`${history.location.pathname}?pageID=${6}`);
+    };
 
     return (
         <div>

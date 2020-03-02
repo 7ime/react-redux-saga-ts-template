@@ -13,13 +13,13 @@ interface IProps {
     people: IPeopleState;
     peopleByGender: IPeople.Model[] | null;
     totalCountOfPeople: number | null;
-    dispatch: Dispatch
+    dispatch: Dispatch;
 }
 
 class SwapiInfo extends React.Component<IProps, {}> {
     componentDidMount() {
         this.props.dispatch(fetchPeopleAction());
-        this.props.dispatch(fetchHumanAction(5))
+        this.props.dispatch(fetchHumanAction(5));
     }
 
     render() {
@@ -32,13 +32,13 @@ class SwapiInfo extends React.Component<IProps, {}> {
                         <div>{human.name}</div>
                         <div className='swapi-info-component'>{name} - {mass}: {this.props.totalCountOfPeople}</div>
                     </React.Fragment>
-                )
+                );
             });
         }
 
         return (
             <div className='swapi-info-component'>Loading...</div>
-        )
+        );
     }
 }
 
@@ -47,7 +47,7 @@ const mapStateToProps = (state: IAppState) => {
         people: state.people,
         totalCountOfPeople: selectTotalCountOfPeople(state),
         peopleByGender: selectPeopleByGender(state, 'male')
-    }
+    };
 };
 
 export default connect(mapStateToProps)(SwapiInfo);

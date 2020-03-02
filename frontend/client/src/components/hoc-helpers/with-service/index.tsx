@@ -17,6 +17,6 @@ export const withService = (mapServicesToProps: IMapServicesToProps) => (Wrapped
                     }
                 }
             </ServiceConsumer>
-        )
-    }
+        );
+    };
 };

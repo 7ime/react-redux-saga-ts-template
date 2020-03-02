@@ -13,7 +13,7 @@ const minLength = (value: string, min: number) => {
 };
 
 const valueIsEmpty = (value: string) => {
-    return value.trim().length === 0
+    return value.trim().length === 0;
 };
 
 const validationSet = {

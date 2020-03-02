@@ -10,7 +10,7 @@ export const selectTotalCountOfPeople = createSelector(
     selectPeopleState,
     (state: IPeopleState): number | null => {
         if (state.list) {
-            return state.list.length
+            return state.list.length;
         }
 
         return null;

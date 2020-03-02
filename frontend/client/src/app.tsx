@@ -15,6 +15,6 @@ export default class App extends React.Component {
                     <Redirect from='*' to='/' exact/>
                 </Switch>
             </div>
-        )
+        );
     }
 }

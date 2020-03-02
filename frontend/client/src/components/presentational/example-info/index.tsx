@@ -7,7 +7,7 @@ const ExampleInfo: React.FC = () => {
             <p>This build for react application with redux for managment state</p>
             <Button/>
         </React.Fragment>
-    )
+    );
 };
 
 export default ExampleInfo;
