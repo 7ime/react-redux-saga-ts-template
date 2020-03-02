@@ -4,7 +4,6 @@ import {IService} from '../../../services/model';
 import {Link } from 'react-router-dom';
 import {withRouter, useHistory} from 'react-router';
 import * as qs from 'query-string';
-import {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {selectPeopleByGender} from '../../../store/selectors/people.selectors';
 import {IAppState} from '../../../store/state/app.state';
@@ -14,9 +13,9 @@ interface IProps {
 }
 
 const useCustomHooks = () => {
-    const [gender, setGender] = useState('male');
+    const [gender, setGender] = React.useState('male');
 
-    useEffect(() => {
+    React.useEffect(() => {
         setTimeout(() => {
             setGender('female');
         }, 1000)
@@ -29,7 +28,7 @@ const Hooks = (props: IProps) => {
     const [count, setCount] = React.useState(0);
     const [status, setStatus] = React.useState(false);
 
-    const peopleByGender = useSelector((state: IAppState) => selectPeopleByGender(state,'male'));
+    const peopleByGender = useSelector((state: IAppState) => selectPeopleByGender(state, 'male'));
 
     const history = useHistory();
 

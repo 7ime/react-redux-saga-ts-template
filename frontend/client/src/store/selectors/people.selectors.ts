@@ -22,7 +22,7 @@ const selectGender = (_: IAppState, gender: IGender) => gender;
 export const selectPeopleByGender = createSelector(
     [selectPeopleState, selectGender],
     (state: IPeopleState, gender: IGender): IPeople.Model[] | null => {
-        if(state.list) {
+        if (state.list) {
             return state.list.filter(item => item.gender === gender);
         }
 

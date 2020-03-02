@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 
 import './index.scss';
-import {Dispatch} from "redux";
+import {Dispatch} from 'redux';
 import {IAppState} from '../../../store/state/app.state';
 import {fetchHumanAction, fetchPeopleAction} from '../../../store/actions/people.actions';
 import {IPeopleState} from '../../../store/state/people.state';
@@ -25,9 +25,9 @@ class SwapiInfo extends React.Component<IProps, {}> {
     render() {
         const {peopleByGender, people: {human}} = this.props;
 
-        if(peopleByGender && human) {
+        if (peopleByGender && human) {
             return peopleByGender.map(({name, mass}: IPeople.Model, index) => {
-                return(
+                return (
                     <React.Fragment key={index}>
                         <div>{human.name}</div>
                         <div className='swapi-info-component'>{name} - {mass}: {this.props.totalCountOfPeople}</div>
@@ -36,7 +36,7 @@ class SwapiInfo extends React.Component<IProps, {}> {
             });
         }
 
-        return(
+        return (
             <div className='swapi-info-component'>Loading...</div>
         )
     }

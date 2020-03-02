@@ -7,10 +7,10 @@ import {Provider} from 'react-redux';
 import '@styles/global.scss';
 
 import App from './app';
-import getAppStore from "./store";
-import getService from "./services";
-import {ServiceProvider} from "./components/context/service-context";
-import {HelmetSet} from "./components/presentational/helmet-set";
+import getAppStore from './store';
+import getService from './services';
+import {ServiceProvider} from './components/context/service-context';
+import {HelmetSet} from './components/presentational/helmet-set';
 
 ReactDOM.render((
     <Provider store={getAppStore()}>

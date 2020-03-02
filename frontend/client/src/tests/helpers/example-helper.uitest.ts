@@ -1,4 +1,4 @@
-import {exampleHelper} from "../../helpers/example";
+import {exampleHelper} from '../../helpers/example';
 
 describe('test pure function exampleHelper', () => {
     it('success', () => {

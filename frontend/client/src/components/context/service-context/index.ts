@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import getService from "../../../services";
+import getService from '../../../services';
 
 const {
     Provider: ServiceProvider,

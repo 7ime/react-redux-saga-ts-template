@@ -1,5 +1,5 @@
-import PeopleService from "./people-service";
-import {IService} from "./model";
+import PeopleService from './people-service';
+import {IService} from './model';
 
 class Service implements IService {
     public peopleService = new PeopleService();

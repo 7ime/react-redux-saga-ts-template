@@ -1,5 +1,5 @@
 import axios, {AxiosInstance} from 'axios';
-import {IFetcher} from "./model";
+import {IFetcher} from './model';
 
 class Fetcher implements IFetcher{
     private axios: AxiosInstance;
@@ -19,25 +19,25 @@ class Fetcher implements IFetcher{
     public get = async(url: string, body: any = {}) => {
         const result = await this.axios.get(url, body);
 
-        return await result.data;
+        return result.data;
     };
 
     public post = async(url: string, body: any = {}) => {
         const result = await this.axios.post(url, body);
 
-        return await result.data;
+        return result.data;
     };
 
     public put = async(url: string, body: any = {}) => {
         const result = await this.axios.put(url, body);
 
-        return await result.data;
+        return result.data;
     };
 
     public delete = async(url: string, body: any = {}) => {
         const result = await this.axios.delete(url, body);
 
-        return await result.data;
+        return result.data;
     };
 }
 

@@ -9,7 +9,13 @@ const resolveAlias = require('./tools/resolve-alias');
 
 const configForkTsCheckerWebpackPlugin = {
     tsconfig: resolvePath('tsconfig.json'),
-    useTypescriptIncrementalApi: true
+    useTypescriptIncrementalApi: true,
+    checkSyntacticErrors: true,
+    formatter: 'codeframe',
+    silent: false,
+    tslint: true,
+    watch: 'src',
+    workers: 1,
 }
 
 const mode = process.env.NODE_ENV;

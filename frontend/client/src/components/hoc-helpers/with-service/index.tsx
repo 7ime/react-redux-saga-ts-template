@@ -1,11 +1,9 @@
 import * as React from 'react';
 
-import {IService} from "../../../services/model";
-import {ServiceConsumer} from "../../context/service-context";
+import {IService} from '../../../services/model';
+import {ServiceConsumer} from '../../context/service-context';
 
-export interface IMapServicesToProps {
-    (service: IService): Partial<IService>;
-}
+export type IMapServicesToProps = (service: IService) => Partial<IService>;
 
 export const withService = (mapServicesToProps: IMapServicesToProps) => (Wrapped: any) => {
     return (props: any) => {

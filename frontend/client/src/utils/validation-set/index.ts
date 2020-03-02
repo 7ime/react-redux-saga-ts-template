@@ -9,7 +9,7 @@ const email = (value: string) => {
 };
 
 const minLength = (value: string, min: number) => {
-    return (value.length >= min)
+    return (value.length >= min);
 };
 
 const valueIsEmpty = (value: string) => {
