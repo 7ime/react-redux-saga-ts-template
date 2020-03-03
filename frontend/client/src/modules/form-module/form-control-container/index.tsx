@@ -1,17 +1,17 @@
 import * as React from 'react';
 import {IForm} from '../shared';
 
-interface IProps {
-    form: IForm<any>;
-    controlName: string;
+interface IProps<T> {
+    form: IForm<T>;
+    controlName: keyof T;
     children: any;
 }
 
-interface IState {
-    value: any;
+interface IState<T> {
+    value: T[keyof T];
 }
 
-class FormControlContainer extends React.Component<IProps, IState> {
+class FormControlContainer<T> extends React.Component<IProps<T>, IState<T>> {
     state = {
         value: this.props.form.getControl(this.props.controlName).initValue
     };
@@ -35,7 +35,7 @@ class FormControlContainer extends React.Component<IProps, IState> {
         const control = this.props.form.getControl(this.props.controlName);
         const showErrors = this.props.form.showErrors;
 
-        if (showErrors) {
+        if (showErrors && control.rules && control.rules.length) {
             passProps.error = control.error;
         }
 

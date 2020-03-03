@@ -8,7 +8,7 @@ import {fetchHumanAction, fetchPeopleAction} from '../../../store/actions/people
 import {IPeopleState} from '../../../store/state/people.state';
 import {selectPeopleByGender, selectTotalCountOfPeople} from '../../../store/selectors/people.selectors';
 import IPeople from '../../../models/people.model';
-import {EFormShowErrors, IForm, IFormAdvancedControl} from '../../../modules/form-module/shared';
+import {EFormShowErrors, IFormAdvancedControl} from '../../../modules/form-module/shared';
 import FormBuilder from '../../../modules/form-module/form-builder';
 import FormValidatorsBuilder from '../../../modules/form-module/form-validators-builder';
 import FormControlContainer from '../../../modules/form-module/form-control-container';
@@ -28,7 +28,7 @@ interface IControls {
 }
 
 class SwapiInfo extends React.Component<IProps, {}> {
-    private form: IForm<IControls> = new FormBuilder<IControls>({
+    private form = new FormBuilder<IControls>({
         showErrors: EFormShowErrors.immediately,
         controls: {
             username: {
@@ -74,17 +74,25 @@ class SwapiInfo extends React.Component<IProps, {}> {
     render() {
         return (
             <div className='swapi-info-component'>
-                <form onSubmit={this.onSubmit}>
-                    <FormControlContainer form={this.form} controlName={'username'}>
-                        <TextField/>
-                    </FormControlContainer>
-                    <FormControlContainer form={this.form} controlName={'password'}>
-                        <TextField/>
-                    </FormControlContainer>
-                    <FormControlContainer form={this.form} controlName={'repeatPassword'}>
-                        <TextField/>
-                    </FormControlContainer>
-                    <br/>
+                <form onSubmit={this.onSubmit} className={'form'}>
+                    <div className={'form-control'}>
+                        <FormControlContainer form={this.form} controlName={'username'}>
+                            <TextField/>
+                        </FormControlContainer>
+                    </div>
+
+                    <div className={'form-control'}>
+                        <FormControlContainer form={this.form} controlName={'password'}>
+                            <TextField/>
+                        </FormControlContainer>
+                    </div>
+
+                    <div className={'form-control'}>
+                        <FormControlContainer form={this.form} controlName={'repeatPassword'}>
+                            <TextField/>
+                        </FormControlContainer>
+                    </div>
+
                     <button type={'submit'}>Submit</button>
                 </form>
             </div>
