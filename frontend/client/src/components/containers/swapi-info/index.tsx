@@ -46,7 +46,7 @@ class SwapiInfo extends React.Component<IProps, {}> {
             repeatPassword: {
                 initValue: '',
                 rules: [
-                    // FormValidatorsBuilder.required('This field is required'),
+                    FormValidatorsBuilder.required('This field is required'),
                     FormValidatorsBuilder.match('password', 'This field is not match with PASSWORD')
                 ]
             }

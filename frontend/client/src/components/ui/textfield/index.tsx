@@ -22,6 +22,6 @@ const TextField = (props: IProps) => {
             {error.error && <div>{error.prompt}</div>}
         </div>
     );
-}
+};
 
 export default TextField;
