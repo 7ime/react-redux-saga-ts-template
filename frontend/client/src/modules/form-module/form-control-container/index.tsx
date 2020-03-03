@@ -1,23 +1,35 @@
 import * as React from 'react';
-import {IForm} from '../shared';
+import {IForm, IFormControlError} from '../shared';
 
 interface IProps<T> {
     form: IForm<T>;
     controlName: keyof T;
-    children: any;
+    children: React.ReactElement;
+}
+
+interface IInjectProps<T> {
+    value: T[keyof T];
+    onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+    error?: IFormControlError;
 }
 
 interface IState<T> {
     value: T[keyof T];
 }
 
-class FormControlContainer<T> extends React.Component<IProps<T>, IState<T>> {
+class FormControlContainer<T> extends React.PureComponent<IProps<T>, IState<T>> {
     state = {
         value: this.props.form.getControl(this.props.controlName).initValue
     };
 
-    onChange = (event: React.ChangeEvent) => {
-        const newValue = (event.target as any).value;
+    constructor(props: IProps<T>) {
+        super(props);
+
+        this.props.form.bindForceUpdateComponentWithControl(this.props.controlName, this.forceUpdate.bind(this));
+    }
+
+    onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue: T[keyof T] = event.target.value as any;
 
         this.props.form.updateControl(this.props.controlName, newValue);
 
@@ -27,7 +39,7 @@ class FormControlContainer<T> extends React.Component<IProps<T>, IState<T>> {
     };
 
     render() {
-        const passProps: any = {
+        const injectProps: IInjectProps<T> = {
             value: this.state.value,
             onChange: this.onChange
         };
@@ -36,10 +48,10 @@ class FormControlContainer<T> extends React.Component<IProps<T>, IState<T>> {
         const showErrors = this.props.form.showErrors;
 
         if (showErrors && control.rules && control.rules.length) {
-            passProps.error = control.error;
+            injectProps.error = control.error;
         }
 
-        return React.cloneElement(this.props.children, passProps);
+        return React.cloneElement(this.props.children, injectProps);
     }
 }
 

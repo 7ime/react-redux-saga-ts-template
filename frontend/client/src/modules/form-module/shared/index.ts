@@ -8,10 +8,7 @@ export enum EValidatorsRules {
     required = 'required'
 }
 
-export interface IFormControlError {
-    error: boolean;
-    prompt: string | null;
-}
+export type IFormControlError = string | null;
 
 export enum EFormShowErrors {
     delayed = 'delayed',
@@ -51,6 +48,7 @@ export interface IFormControl<T> {
     currentValue: T[keyof T];
     prevValue: T[keyof T];
     error: IFormControlError;
+    forceUpdateCb?: any;
 }
 
 export type IFormControls<T extends {}> = {

@@ -3,15 +3,19 @@ import {IFormControl, IFormControls, IFormSerialize} from '../shared';
 namespace IFormBuilder {
     export declare class Impl<T extends {}> {
         get valid(): boolean;
+        set valid(value: boolean);
+
         get controls(): IFormControls<T>;
+        get serialize(): IFormSerialize<T>;
 
         get showErrors(): boolean;
         set showErrors(value: boolean);
 
         getControl(controlName: keyof T): IFormControl<T>;
         updateControl(controlName: keyof T, value: T[keyof T]): void;
+        clearErrorsForControl(controlName: keyof T): void;
 
-        get serialize(): IFormSerialize<T>;
+        bindForceUpdateComponentWithControl(controlName: keyof T, cb: () => void): void;
     }
 
     export interface AdditionalParams<T> {

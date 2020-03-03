@@ -19,41 +19,6 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
         this._init();
     }
 
-    private _init() {
-        const {controls: initControls} = this.initConfig;
-
-        if (this.initConfig.showErrors === EFormShowErrors.delayed) {
-            this.showErrors = false;
-        }
-
-        const initControlsArr = Object.keys(initControls);
-
-        initControlsArr.forEach((controlName: string) => {
-            const initControl = (initControls as any)[controlName];
-
-            const typeControl = initControl.typeControl ? initControl.typeControl : EFormTypesControl.textfield;
-
-            const control: IFormControl<T> = {
-                name: controlName,
-                initValue: initControl.initValue,
-                rules: initControl.rules,
-                typeControl,
-                currentValue: initControl.initValue,
-                prevValue: initControl.initValue,
-                error: {
-                    error: false,
-                    prompt: null
-                }
-            } as any;
-
-            (this._controls as any)[controlName] = control;
-        });
-
-        this._validateForm();
-
-        this.additionalParams.updateFormCb(null);
-    }
-
     get valid() {
         return this._valid;
     }
@@ -101,6 +66,48 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
         this.additionalParams.updateFormCb(this._controls[controlName]);
     }
 
+    clearErrorsForControl(controlName: keyof T): void {
+        this._controls[controlName].error = null;
+
+        this._controls[controlName].forceUpdateCb && this._controls[controlName].forceUpdateCb();
+    }
+
+    bindForceUpdateComponentWithControl(controlName: keyof T, cb: () => void): void {
+        this._controls[controlName].forceUpdateCb = cb;
+    }
+
+    private _init() {
+        const {controls: initControls} = this.initConfig;
+
+        if (this.initConfig.showErrors === EFormShowErrors.delayed) {
+            this.showErrors = false;
+        }
+
+        const initControlsArr = Object.keys(initControls);
+
+        initControlsArr.forEach((controlName: string) => {
+            const initControl = (initControls as any)[controlName];
+
+            const typeControl = initControl.typeControl ? initControl.typeControl : EFormTypesControl.textfield;
+
+            const control: IFormControl<T> = {
+                name: controlName,
+                initValue: initControl.initValue,
+                rules: initControl.rules,
+                typeControl,
+                currentValue: initControl.initValue,
+                prevValue: initControl.initValue,
+                error: null,
+            } as any;
+
+            (this._controls as any)[controlName] = control;
+        });
+
+        this._validateForm();
+
+        this.additionalParams.updateFormCb(null);
+    }
+
     private _validateForm() {
         const controlsArr = Object.keys(this._controls);
 
@@ -109,17 +116,13 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
         controlsArr.forEach((controlName: string) => {
             const control: IFormControl<T> = (this._controls as any)[controlName];
 
-            const result: IFormControlError = {
-                error: false,
-                prompt: null
-            };
+            let error: IFormControlError = null;
 
             control.rules && control.rules.some((rule: IFormRule) => {
                 const checkRuleResult = this._checkRule(rule, control.currentValue);
 
                 if (!checkRuleResult) {
-                    result.error = true;
-                    result.prompt = rule.prompt;
+                    error = rule.prompt;
 
                     isValid = false;
 
@@ -129,7 +132,7 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
                 return false;
             });
 
-            (this._controls as any)[controlName].error = result;
+            (this._controls as any)[controlName].error = error;
         });
 
         this.valid = isValid;

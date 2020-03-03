@@ -8,7 +8,7 @@ import {fetchHumanAction, fetchPeopleAction} from '../../../store/actions/people
 import {IPeopleState} from '../../../store/state/people.state';
 import {selectPeopleByGender, selectTotalCountOfPeople} from '../../../store/selectors/people.selectors';
 import IPeople from '../../../models/people.model';
-import {EFormShowErrors, IFormAdvancedControl} from '../../../modules/form-module/shared';
+import {EFormShowErrors, IFormControl} from '../../../modules/form-module/shared';
 import FormBuilder from '../../../modules/form-module/form-builder';
 import FormValidatorsBuilder from '../../../modules/form-module/form-validators-builder';
 import FormControlContainer from '../../../modules/form-module/form-control-container';
@@ -55,7 +55,7 @@ class SwapiInfo extends React.Component<IProps, {}> {
         updateFormCb: this.updateForm
     });
 
-    updateForm(initiatorControl: IFormAdvancedControl<IControls> | null): void {
+    updateForm(initiatorControl: IFormControl<IControls> | null): void {
         console.log(initiatorControl);
     }
 

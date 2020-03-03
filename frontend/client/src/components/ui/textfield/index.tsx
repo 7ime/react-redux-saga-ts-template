@@ -10,16 +10,13 @@ interface IProps {
 const TextField = (props: IProps) => {
     const {
         value = '',
-        error = {
-            error: false,
-            prompt: null
-        }
+        error = null
     } = props;
 
     return(
         <div>
             <input value={value} onChange={props.onChange ? props.onChange : () => {}}/>
-            {error.error && <div>{error.prompt}</div>}
+            {error && <div>{error}</div>}
         </div>
     );
 };
