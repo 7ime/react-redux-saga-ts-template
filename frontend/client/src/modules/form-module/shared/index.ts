@@ -30,7 +30,7 @@ export type IFormRule<T = undefined> = {
     params: T;
 });
 
-export type IFormControl<T extends {}, K = undefined> = {
+export type IFormInitControl<T extends {}, K = undefined> = {
     rules?: IFormRule[];
     typeControl?: EFormTypesControl;
 } & (K extends keyof T ? {
@@ -39,11 +39,12 @@ export type IFormControl<T extends {}, K = undefined> = {
     initValue: string | boolean;
 });
 
-export type IFormControls<T> = {
-    [K in keyof T]: IFormControl<T, K>;
+export type IFormInitControls<T> = {
+    [K in keyof T]: IFormInitControl<T, K>;
 };
 
-export interface IFormAdvancedControl<T> {
+export interface IFormControl<T> {
+    name: keyof T;
     rules?: IFormRule[];
     typeControl: EFormTypesControl;
     initValue: T[keyof T];
@@ -52,13 +53,13 @@ export interface IFormAdvancedControl<T> {
     error: IFormControlError;
 }
 
-export type IFormAdvancedControls<T extends {}> = {
-    [K in keyof T]: IFormAdvancedControl<T>;
+export type IFormControls<T extends {}> = {
+    [K in keyof T]: IFormControl<T>;
 };
 
 export interface IFormInitConfig<T> {
     showErrors?: EFormShowErrors;
-    controls: IFormControls<T>;
+    controls: IFormInitControls<T>;
 }
 
 export type IFormSerialize<T extends {}> = {

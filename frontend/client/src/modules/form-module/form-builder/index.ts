@@ -2,9 +2,9 @@ import IFormBuilder from './model';
 import {
     EFormShowErrors,
     EFormTypesControl, EValidatorsRules,
-    IFormAdvancedControl,
-    IFormAdvancedControls, IFormControlError,
-    IFormInitConfig, IFormRule, IFormSerialize,
+    IFormControls,
+    IFormControl, IFormControlError,
+    IFormInitConfig, IFormRule, IFormSerialize, IForm,
 } from '../shared';
 import FormValidators from '../form-validators';
 import IFormValidatorsBuilder from '../form-validators-builder/model';
@@ -13,39 +13,40 @@ import IFormValidators from '../form-validators/model';
 export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
     private _valid = false;
     private _showErrors = true;
-    private _advancedControls: IFormAdvancedControls<T> = {} as any;
+    private _controls: IFormControls<T> = {} as any;
 
     constructor(private initConfig: IFormInitConfig<T>, private additionalParams: IFormBuilder.AdditionalParams<T>) {
         this._init();
     }
 
     private _init() {
-        const {controls} = this.initConfig;
+        const {controls: initControls} = this.initConfig;
 
         if (this.initConfig.showErrors === EFormShowErrors.delayed) {
             this.showErrors = false;
         }
 
-        const controlsArr = Object.keys(controls);
+        const initControlsArr = Object.keys(initControls);
 
-        controlsArr.forEach((controlName: string) => {
-            const control = (controls as any)[controlName];
+        initControlsArr.forEach((controlName: string) => {
+            const initControl = (initControls as any)[controlName];
 
-            const typeControl = control.typeControl ? control.typeControl : EFormTypesControl.textfield;
+            const typeControl = initControl.typeControl ? initControl.typeControl : EFormTypesControl.textfield;
 
-            const advancedControl: IFormAdvancedControl<T> = {
-                initValue: control.initValue,
-                rules: control.rules,
+            const control: IFormControl<T> = {
+                name: controlName,
+                initValue: initControl.initValue,
+                rules: initControl.rules,
                 typeControl,
-                currentValue: control.initValue,
-                prevValue: control.initValue,
+                currentValue: initControl.initValue,
+                prevValue: initControl.initValue,
                 error: {
                     error: false,
                     prompt: null
                 }
             } as any;
 
-            (this._advancedControls as any)[controlName] = advancedControl;
+            (this._controls as any)[controlName] = control;
         });
 
         this._validateForm();
@@ -69,44 +70,44 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
         this._showErrors = value;
     }
 
-    get controls(): IFormAdvancedControls<T> {
-        return this._advancedControls;
+    get controls(): IFormControls<T> {
+        return this._controls;
     }
 
     get serialize(): IFormSerialize<T> {
         const result: IFormSerialize<T> = {} as any;
 
-        const advancedControlsArr = Object.keys(this._advancedControls);
+        const controlsArr = Object.keys(this._controls);
 
-        advancedControlsArr.forEach((controlName: string) => {
-            (result as any)[controlName] = (this._advancedControls as any)[controlName].currentValue;
+        controlsArr.forEach((controlName: string) => {
+            (result as any)[controlName] = (this._controls as any)[controlName].currentValue;
         });
 
         return result;
     }
 
-    getControl(controlName: keyof T): IFormAdvancedControl<T> {
-        return this._advancedControls[controlName];
+    getControl(controlName: keyof T): IFormControl<T> {
+        return this._controls[controlName];
     }
 
     updateControl(controlName: keyof T, value: T[keyof T]): void {
-        const {currentValue} = this._advancedControls[controlName];
+        const {currentValue} = this._controls[controlName];
 
-        this._advancedControls[controlName].currentValue = value;
-        this._advancedControls[controlName].prevValue = currentValue;
+        this._controls[controlName].currentValue = value;
+        this._controls[controlName].prevValue = currentValue;
 
         this._validateForm();
 
-        this.additionalParams.updateFormCb(this._advancedControls[controlName]);
+        this.additionalParams.updateFormCb(this._controls[controlName]);
     }
 
     private _validateForm() {
-        const advancedControlsArr = Object.keys(this._advancedControls);
+        const controlsArr = Object.keys(this._controls);
 
         let isValid: boolean = true;
 
-        advancedControlsArr.forEach((controlName: string) => {
-            const control: IFormAdvancedControl<T> = (this._advancedControls as any)[controlName];
+        controlsArr.forEach((controlName: string) => {
+            const control: IFormControl<T> = (this._controls as any)[controlName];
 
             const result: IFormControlError = {
                 error: false,
@@ -128,7 +129,7 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
                 return false;
             });
 
-            (this._advancedControls as any)[controlName].error = result;
+            (this._controls as any)[controlName].error = result;
         });
 
         this.valid = isValid;
@@ -143,7 +144,7 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
                 const matchRule: IFormRule<IFormValidatorsBuilder.MatchParams> = rule as any;
 
                 return FormValidators.match(value, {
-                    withValue: (this._advancedControls as any)[matchRule.params.withField].currentValue
+                    withValue: (this._controls as any)[matchRule.params.withField].currentValue
                 });
             }
             case EValidatorsRules.maxLength: {
