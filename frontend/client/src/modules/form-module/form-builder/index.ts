@@ -4,7 +4,7 @@ import {
     EFormTypesControl, EValidatorsRules,
     IFormControls,
     IFormControl, IFormControlError,
-    IFormInitConfig, IFormRule, IFormSerialize, IForm,
+    IFormInitConfig, IFormRule, IFormSerialize,
 } from '../shared';
 import FormValidators from '../form-validators';
 import IFormValidatorsBuilder from '../form-validators-builder/model';
@@ -77,31 +77,38 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
     }
 
     private _init() {
+        type K = keyof T;
+
         const {controls: initControls} = this.initConfig;
 
         if (this.initConfig.showErrors === EFormShowErrors.delayed) {
             this.showErrors = false;
         }
 
-        const initControlsArr = Object.keys(initControls);
+        const initControlsArr: K[] = Object.keys(initControls) as any;
 
-        initControlsArr.forEach((controlName: string) => {
-            const initControl = (initControls as any)[controlName];
+        this._controls = initControlsArr.reduce((prev: IFormControls<T>, controlName: K) => {
+            const initControl = initControls[controlName];
 
             const typeControl = initControl.typeControl ? initControl.typeControl : EFormTypesControl.textfield;
 
-            const control: IFormControl<T> = {
+            const initValue: T[K] = initControl.initValue as any;
+
+            const newControl: IFormControl<T> = {
                 name: controlName,
-                initValue: initControl.initValue,
+                initValue,
                 rules: initControl.rules,
                 typeControl,
-                currentValue: initControl.initValue,
-                prevValue: initControl.initValue,
+                currentValue: initValue,
+                prevValue: initValue,
                 error: null,
-            } as any;
+            };
 
-            (this._controls as any)[controlName] = control;
-        });
+            prev[controlName] = newControl;
+
+            return prev;
+        }, {} as IFormControls<T>);
+
 
         this._validateForm();
 
@@ -109,12 +116,14 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
     }
 
     private _validateForm() {
-        const controlsArr = Object.keys(this._controls);
+        type K = keyof T;
+
+        const controlsArr: K[] = Object.keys(this._controls) as any;
 
         let isValid: boolean = true;
 
-        controlsArr.forEach((controlName: string) => {
-            const control: IFormControl<T> = (this._controls as any)[controlName];
+        controlsArr.forEach((controlName: K) => {
+            const control = this._controls[controlName];
 
             let error: IFormControlError = null;
 
@@ -132,7 +141,7 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
                 return false;
             });
 
-            (this._controls as any)[controlName].error = error;
+            this._controls[controlName].error = error;
         });
 
         this.valid = isValid;
