@@ -16,6 +16,8 @@ namespace IFormBuilder {
         clearErrorsForControl(controlName: keyof T): void;
 
         bindForceUpdateComponentWithControl(controlName: keyof T, cb: () => void): void;
+
+        onSubmit(): void;
     }
 
     export interface AdditionalParams<T> {

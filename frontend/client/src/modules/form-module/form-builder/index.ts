@@ -76,6 +76,12 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
         this._controls[controlName].forceUpdateCb = cb;
     }
 
+    onSubmit() {
+        this._validateForm(true);
+
+        this.additionalParams.updateFormCb(null);
+    }
+
     private _init() {
         type K = keyof T;
 
@@ -115,7 +121,7 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
         this.additionalParams.updateFormCb(null);
     }
 
-    private _validateForm() {
+    private _validateForm(fromSubmit?: boolean) {
         type K = keyof T;
 
         const controlsArr: K[] = Object.keys(this._controls) as any;
@@ -142,6 +148,10 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
             });
 
             this._controls[controlName].error = error;
+
+            if (fromSubmit) {
+                control.forceUpdateCb && control.forceUpdateCb();
+            }
         });
 
         this.valid = isValid;

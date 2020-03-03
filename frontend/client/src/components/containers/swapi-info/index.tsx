@@ -13,6 +13,7 @@ import FormBuilder from '../../../modules/form-module/form-builder';
 import FormValidatorsBuilder from '../../../modules/form-module/form-validators-builder';
 import FormControlContainer from '../../../modules/form-module/form-control-container';
 import TextField from '../../ui/textfield';
+import FormContainer from '../../../modules/form-module/form-container';
 
 interface IProps {
     people: IPeopleState;
@@ -74,7 +75,7 @@ class SwapiInfo extends React.Component<IProps, {}> {
     render() {
         return (
             <div className='swapi-info-component'>
-                <form onSubmit={this.onSubmit} className={'form'}>
+                <FormContainer form={this.form} onSubmit={this.onSubmit} className={'form'}>
                     <div className={'form-control'}>
                         <FormControlContainer form={this.form} controlName={'username'}>
                             <TextField/>
@@ -94,7 +95,7 @@ class SwapiInfo extends React.Component<IProps, {}> {
                     </div>
 
                     <button type={'submit'}>Submit</button>
-                </form>
+                </FormContainer>
             </div>
         );
     }
