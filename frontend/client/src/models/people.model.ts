@@ -1,11 +1,11 @@
 namespace IPeople {
-    export interface ModelAPI {
+    export interface ModelDTO {
         name: string;
         mass: string;
         gender: 'male' | 'female';
     }
 
-    export interface Model extends ModelAPI {
+    export interface Model extends ModelDTO {
 
     }
 }
