@@ -49,10 +49,6 @@
         stroke: #fff;
       }
     }
-
-    & .ripple {
-      background-color: darken($blue, 25%);
-    }
   }
 
   &_secondary {
@@ -71,10 +67,6 @@
       &__path {
         stroke: #fff;
       }
-    }
-
-    & .ripple {
-      background-color: darken($green, 25%);
     }
   }
 
@@ -98,10 +90,6 @@
       &__path {
         stroke: #fff;
       }
-    }
-
-    & .ripple {
-      background-color: darken($red, 25%);
     }
   }
 

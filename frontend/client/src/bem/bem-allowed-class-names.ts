@@ -1,4 +1,4 @@
-export enum EBemClassNames {
+export enum EBemAllowedClassNames {
     button = 'button',
     loader = 'loader'
 }

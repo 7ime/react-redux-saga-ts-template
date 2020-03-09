@@ -1,14 +1,17 @@
 import * as React from 'react';
 import IButton from '../../model';
 import Loader from '../../../loaders/components/loader';
-import {EBemClassNames} from '../../../../../bem-class-names';
+import BemShaper from '../../../../../bem/bem-shaper';
+import {EBemAllowedClassNames} from '../../../../../bem/bem-allowed-class-names';
+
+const bem = new BemShaper(EBemAllowedClassNames.button);
 
 const Button = (props: IButton.Props) => {
     const {
         tagName: TagName = 'button',
         loader = false,
         loaderPosition = 'center',
-        mods = [`${EBemClassNames.button}_primary`],
+        mods = ['primary'],
         mixes = [],
         disabled = false,
         children,
@@ -22,12 +25,13 @@ const Button = (props: IButton.Props) => {
         </React.Fragment>
     );
 
-    const classNamesBasedProps = [
-        disabled ? 'is_disabled' : '',
-        loader ? `${EBemClassNames.button}_loader ${EBemClassNames.button}_loader_` + loaderPosition : ''
-    ];
-
-    const classNames = [EBemClassNames.button, ...classNamesBasedProps, ...mods, ...mixes].join(' ').trim();
+    const classNames = [
+        bem.block,
+        bem.mods(mods),
+        bem.mixes(mixes),
+        disabled && bem.is('disabled'),
+        loader && bem.mods(['loader', `loader_${loaderPosition}`])
+    ].join(' ').trim();
 
     return (
         <TagName className={classNames} {...restProps}>

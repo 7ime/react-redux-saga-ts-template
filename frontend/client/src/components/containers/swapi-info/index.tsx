@@ -93,7 +93,13 @@ class SwapiInfo extends React.Component<IProps, {}> {
                         </FormControlContainer>
                     </div>
 
-                    <Button type={'submit'} loader={true}>Submit</Button>
+                    <Button type={'submit'}
+                            mixes={['form']}
+                            mods={['secondary']}
+                            loader={true}>Submit</Button>
+
+                    <Button type={'submit'}
+                            mixes={['form', 'form_test']}>Submit</Button>
                 </FormContainer>
             </div>
         );
