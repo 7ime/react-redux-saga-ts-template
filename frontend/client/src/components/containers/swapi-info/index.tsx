@@ -65,9 +65,7 @@ class SwapiInfo extends React.Component<IProps, {}> {
         this.props.dispatch(fetchHumanAction(5));
     }
 
-    onSubmit = (event: any) => {
-        event.preventDefault();
-
+    onSubmit = (event: React.SyntheticEvent) => {
         console.log(this.form.valid);
         console.log(this.form.serialize);
     }

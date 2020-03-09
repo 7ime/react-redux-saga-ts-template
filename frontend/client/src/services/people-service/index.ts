@@ -10,13 +10,13 @@ export default class PeopleService implements IPeopleService {
     private fetcher!: IFetcher;
 
     fetchHuman = async (id: number): Promise<IPeople.Model> => {
-        return this.fetcher.get(Paths.People.FetchHuman(id));
+        return this.fetcher.get(Paths.People.fetchHuman(id));
     }
 
     fetchPeople = async (): Promise<IPeople.Model[]> => {
         const response: {
             results: IPeople.Model[]
-        } = await this.fetcher.get(Paths.People.FetchPeople());
+        } = await this.fetcher.get(Paths.People.fetchPeople());
 
         return response.results;
     }
