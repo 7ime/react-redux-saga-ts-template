@@ -1,96 +1,33 @@
-@import "./variables/colors.scss";
-@import "./tools/transitions.scss";
-@import "./typography/typography.scss";
+@import "./variables/colors";
+@import "./variables/shared";
 
-@font-face {
-    font-family: 'OpenSans';
-    src: url('~@fonts/OpenSans-Light.ttf') format('truetype');
-    font-weight: 300;
-}
+/* ---------------------------------------------------------------------
+    Fonts
+------------------------------------------------------------------------ */
 
-@font-face {
-    font-family: 'OpenSans';
-    src: url('~@fonts/OpenSans-Regular.ttf') format('truetype');
-    font-weight: 400;
-}
+@import "./fonts/fonts";
 
-@font-face {
-    font-family: 'OpenSans';
-    src: url('~@fonts/OpenSans-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-}
+/* ---------------------------------------------------------------------
+    UI
+------------------------------------------------------------------------ */
 
-@font-face {
-    font-family: 'OpenSans';
-    src: url('~@fonts/OpenSans-Bold.ttf') format('truetype');
-    font-weight: 700;
-}
+// level - 0
+@import "src/components/ui/loaders/styles/loader";
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    position: relative;
-    box-shadow: none;
-    outline: none;
-}
+// level - 1
+@import "src/components/ui/buttons/styles/button";
 
-html{
-    font-size: 10px;
+
+html {
+  font-size: 10px;
 }
 
 html, body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
-input, textarea {
-    &::-webkit-input-placeholder {
-        color: $dark-30;
-        @include transition();
-    }
-
-    &:-moz-placeholder {
-        color: $dark-30;
-        @include transition();
-    }
-
-    &:-moz-placeholder {
-        color: $dark-30;
-        @include transition();
-    }
-
-    &:-ms-input-placeholder {
-        color: $dark-30;
-        @include transition();
-    }
-
-    &:focus::-webkit-input-placeholder {
-        color: transparent;
-        @include transition();
-
-    }
-
-    &:focus::-moz-placeholder {
-        color: transparent;
-    }
-
-    &:focus:-moz-placeholder {
-        color: transparent;
-        @include transition();
-    }
-
-    &:focus:-ms-input-placeholder {
-        color: transparent;
-        @include transition();
-    }
+body {
+  position: relative;
+  font-family: $font;
+  font-size: 1.6rem;
 }
-
-/* clears the 'X' from Internet Explorer */
-input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
-
-/* clears the 'X' from Chrome */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }

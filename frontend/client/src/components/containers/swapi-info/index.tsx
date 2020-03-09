@@ -14,6 +14,7 @@ import FormValidatorsBuilder from '../../../modules/form-module/form-validators-
 import FormControlContainer from '../../../modules/form-module/form-control-container';
 import TextField from '../../ui/textfield';
 import FormContainer from '../../../modules/form-module/form-container';
+import Button from '../../ui/buttons/components/button';
 
 interface IProps {
     people: IPeopleState;
@@ -92,7 +93,7 @@ class SwapiInfo extends React.Component<IProps, {}> {
                         </FormControlContainer>
                     </div>
 
-                    <button type={'submit'}>Submit</button>
+                    <Button type={'submit'} loader={true}>Submit</Button>
                 </FormContainer>
             </div>
         );
