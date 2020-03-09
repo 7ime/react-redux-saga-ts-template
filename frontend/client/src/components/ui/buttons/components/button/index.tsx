@@ -3,27 +3,21 @@ import IButton from '../../model';
 import Loader from '../../../loaders/components/loader';
 import BemShaper from '../../../../../bem/bem-shaper';
 import {EBemAllowedClassNames} from '../../../../../bem/bem-allowed-class-names';
+import {ELoaderPosition} from '../../../../../constants/shared';
 
 const bem = new BemShaper(EBemAllowedClassNames.button);
 
 const Button = (props: IButton.Props) => {
     const {
         tagName: TagName = 'button',
-        loader = false,
-        loaderPosition = 'center',
+        loader,
+        loaderPosition = ELoaderPosition.center,
         mods = ['primary'],
         mixes = [],
-        disabled = false,
+        disabled,
         children,
         ...restProps
     } = props;
-
-    const innerButtonElem = (
-        <React.Fragment>
-            {children}
-            {loader && <Loader/>}
-        </React.Fragment>
-    );
 
     const classNames = [
         bem.block,
@@ -35,7 +29,8 @@ const Button = (props: IButton.Props) => {
 
     return (
         <TagName className={classNames} {...restProps}>
-            {innerButtonElem}
+            {children}
+            {loader && <Loader/>}
         </TagName>
     );
 };

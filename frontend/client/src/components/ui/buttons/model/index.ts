@@ -1,7 +1,8 @@
 import * as React from 'react';
+import {ELoaderPosition} from '../../../../constants/shared';
 
 namespace IButton {
-    export type LoaderPosition = 'left' | 'center' | 'right';
+    export type LoaderPosition = ELoaderPosition;
     export type Target = '_blank' | '_self' | '_parent' | '_top';
     export type TagName = 'button' | 'a';
     export type ButtonType = 'button' | 'submit';
@@ -15,11 +16,11 @@ namespace IButton {
         title?: string;
         href?: string;
 
-        onMouseDown?(e: React.MouseEvent): unknown;
-        onMouseUp?(e: React.MouseEvent): unknown;
-        onClick?(e: React.MouseEvent): unknown;
-        onFocus?(e: React.FocusEvent): unknown;
-        onBlur?(e: React.FocusEvent): unknown;
+        onMouseDown?(event: React.MouseEvent): unknown;
+        onMouseUp?(event: React.MouseEvent): unknown;
+        onClick?(event: React.MouseEvent): unknown;
+        onFocus?(event: React.FocusEvent): unknown;
+        onBlur?(event: React.FocusEvent): unknown;
 
         loader?: boolean;
         loaderPosition?: LoaderPosition;

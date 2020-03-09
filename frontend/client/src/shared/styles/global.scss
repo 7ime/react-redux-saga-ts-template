@@ -1,33 +1,10 @@
 @import "./variables/colors";
 @import "./variables/shared";
 
-/* ---------------------------------------------------------------------
-    Fonts
------------------------------------------------------------------------- */
-
 @import "./fonts/fonts";
+@import "./html-body/html-body";
 
-/* ---------------------------------------------------------------------
-    UI
------------------------------------------------------------------------- */
+// UI components
 
-// level - 0
 @import "src/components/ui/loaders/styles/loader";
-
-// level - 1
 @import "src/components/ui/buttons/styles/button";
-
-
-html {
-  font-size: 10px;
-}
-
-html, body {
-  overflow-x: hidden;
-}
-
-body {
-  position: relative;
-  font-family: $font;
-  font-size: 1.6rem;
-}
