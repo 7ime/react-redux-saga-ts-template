@@ -1,0 +1,31 @@
+@import '~@styles/variables/colors.scss';
+@import '~@styles/variables/shared.scss';
+
+.header {
+  box-shadow: 0 0 2rem rgba($grey_dark_100, 0.1);
+
+  &__menu {
+    display: flex;
+  }
+
+  &__link {
+    padding: 2rem 2rem;
+    transition: $transition;
+    font-weight: 600;
+
+    &.is_active {
+      background-color: $primary;
+      color: #fff;
+    }
+
+    &, &:active {
+      color: $text_c;
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: $yellow;
+      color: $text_c;
+    }
+  }
+}

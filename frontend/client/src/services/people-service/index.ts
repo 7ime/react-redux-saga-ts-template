@@ -2,7 +2,7 @@ import {IFetcher} from '../../api/fetcher/model';
 import Paths from '../../api/paths';
 import {IPeopleService} from './model';
 import {injectPropertyFetcher} from '../../injects/injects-fetcher';
-import IPeople from '../../models/people.model';
+import {IPeople} from '../../entities/people.entity';
 
 export default class PeopleService implements IPeopleService {
 

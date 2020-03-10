@@ -1,8 +1,8 @@
 import {IAppState} from '../state/app.state';
 import {createSelector} from 'reselect';
 import {IPeopleState} from '../state/people.state';
-import IPeople from '../../models/people.model';
 import {IGender} from '../../models/shared.model';
+import {IPeople} from '../../entities/people.entity';
 
 const selectPeopleState = (state: IAppState) => state.people;
 

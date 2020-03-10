@@ -3,12 +3,14 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 
 import HomeScene from './components/scenes/home-scene';
 import HooksScene from './components/scenes/hooks-scene';
+import Header from './components/containers/header';
 
 export default class App extends React.Component {
 
     render() {
         return(
             <div>
+                <Header/>
                 <Switch>
                     <Route path='/' exact component={HomeScene}/>
                     <Route path='/hooks' exact component={HooksScene}/>

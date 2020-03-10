@@ -1,5 +1,5 @@
 import {Maybe} from '../../toolbox/custom-types';
-import IPeople from '../../models/people.model';
+import {IPeople} from '../../entities/people.entity';
 
 export interface IPeopleState {
     list: Maybe<IPeople.Model[]>;

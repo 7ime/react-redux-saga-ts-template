@@ -1,5 +1,6 @@
 export enum EBemAllowedClassNames {
-    // UI blocks
     button = 'button',
-    loader = 'loader'
+    loader = 'loader',
+    container = 'container',
+    header = 'header'
 }

@@ -1,4 +1,4 @@
-import IPeople from '../../models/people.model';
+import {IPeople} from '../../entities/people.entity';
 
 export enum EPeopleActions {
     FetchPeople = '[People] FetchPeople',

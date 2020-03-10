@@ -1,4 +1,4 @@
-namespace IPeople {
+export namespace IPeople {
     export interface ModelDTO {
         name: string;
         mass: string;
@@ -9,5 +9,3 @@ namespace IPeople {
 
     }
 }
-
-export default IPeople;

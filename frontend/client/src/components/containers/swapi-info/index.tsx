@@ -7,7 +7,6 @@ import {IAppState} from '../../../store/state/app.state';
 import {fetchHumanAction, fetchPeopleAction} from '../../../store/actions/people.actions';
 import {IPeopleState} from '../../../store/state/people.state';
 import {selectPeopleByGender, selectTotalCountOfPeople} from '../../../store/selectors/people.selectors';
-import IPeople from '../../../models/people.model';
 import {EFormShowErrors, IFormControl} from '../../../modules/form-module/shared';
 import FormBuilder from '../../../modules/form-module/form-builder';
 import FormValidatorsBuilder from '../../../modules/form-module/form-validators-builder';
@@ -15,6 +14,7 @@ import FormControlContainer from '../../../modules/form-module/form-control-cont
 import TextField from '../../ui/textfield';
 import FormContainer from '../../../modules/form-module/form-container';
 import Button from '../../ui/buttons/components/button';
+import {IPeople} from '../../../entities/people.entity';
 
 interface IProps {
     people: IPeopleState;
