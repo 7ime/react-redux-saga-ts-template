@@ -9,12 +9,17 @@ import {IRouter} from '../../../models/router-model';
 const bem = new BemShaper(EBemAllowedClassNames.header);
 
 interface IProps extends IRouter.Props {
-
+    mixes?: string[];
 }
 
 const Header = (props: IProps) => {
+    const {
+        mixes = []
+    } = props;
+
     const classNames = [
-        bem.block
+        bem.block,
+        bem.mixes(mixes)
     ].join(' ').trim();
 
     return (

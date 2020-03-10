@@ -13,7 +13,7 @@ export default class App extends React.Component {
     render() {
         return(
             <div className={bem.block}>
-                <Header/>
+                <Header mixes={['app']}/>
                 <Switch>
                     <Route path='/' exact component={HomeScene}/>
                     <Route path='/hooks' exact component={HooksScene}/>
