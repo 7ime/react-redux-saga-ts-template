@@ -19,7 +19,7 @@ const Header = (props: IProps) => {
 
     return (
         <div className={classNames}>
-            <div className='container'>
+            <div className={EBemAllowedClassNames.container}>
                 <div className={bem.elem('menu')}>
                     <NavLink to={'/'}
                              exact
