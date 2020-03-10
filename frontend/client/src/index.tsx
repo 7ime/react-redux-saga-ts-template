@@ -10,7 +10,7 @@ import App from './app';
 import getAppStore from './store';
 import getService from './services';
 import {ServiceProvider} from './components/context/service-context';
-import {HelmetSet} from './components/presentational/helmet-set';
+import HelmetSet from './components/containers/helmet-set';
 
 ReactDOM.render((
     <Provider store={getAppStore()}>
