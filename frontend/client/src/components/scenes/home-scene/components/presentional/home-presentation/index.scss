@@ -1,0 +1,30 @@
+@import '~@styles/variables/colors.scss';
+
+.home-presentation {
+  display: flex;
+  justify-content: center;
+  
+  &__title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  &__list {
+    margin-top: 2rem;
+    display: flex;
+  }
+
+  &__item {
+    padding: 0.5rem 3rem;
+    border-left: 1px solid $grey_light_40;
+
+    &:last-child {
+      border-right: 1px solid $grey_light_40;
+    }
+  }
+
+  &__link {
+    color: $primary;
+  }
+}
