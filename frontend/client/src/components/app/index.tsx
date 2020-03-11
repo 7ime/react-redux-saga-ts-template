@@ -7,6 +7,7 @@ import './index.scss';
 import Header from '../containers/header';
 
 const HomeScene = React.lazy(() => import('../scenes/home-scene'));
+const FormScene = React.lazy(() => import('../scenes/form-scene'));
 
 const bem = new BemShaper(EBemClassNames.app);
 
@@ -31,6 +32,7 @@ export default class App extends React.Component {
                 <React.Suspense fallback={this.getLoaderElem()}>
                     <Switch>
                         <Route path='/' exact component={HomeScene}/>
+                        <Route path='/form' component={FormScene}/>
                         <Redirect from='*' to='/' exact/>
                     </Switch>
                 </React.Suspense>

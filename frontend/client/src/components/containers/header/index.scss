@@ -6,6 +6,7 @@
 
   &__menu {
     display: flex;
+    border-left: 1px solid $grey_light_30;
   }
 
   &__link {

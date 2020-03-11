@@ -1,0 +1,18 @@
+.form-scene {
+  &__content-wrap {
+    display: flex;
+  }
+
+  &__sidebar {
+    flex: 1;
+    padding-right: 1rem;
+  }
+
+  &__content {
+    flex: 3;
+  }
+
+  .form-scene__form-scene-sidebar-menu {
+
+  }
+}

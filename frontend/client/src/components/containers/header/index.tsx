@@ -32,7 +32,6 @@ const Header = (props: IProps) => {
                              className={bem.elem('link')}
                     >Home Page</NavLink>
                     <NavLink to={'/form'}
-                             exact
                              activeClassName={bem.is('active')}
                              className={bem.elem('link')}
                     >Form Page</NavLink>
