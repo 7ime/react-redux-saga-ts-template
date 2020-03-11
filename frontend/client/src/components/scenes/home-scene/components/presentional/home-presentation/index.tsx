@@ -6,6 +6,33 @@ import {EBemClassNames} from '../../../../../../bem/bem-class-names';
 
 const bem = new BemShaper(EBemClassNames.homePresentation);
 
+const linksTechnologies = [
+    {
+        link: 'https://reactjs.org/',
+        title: 'React'
+    },
+    {
+        link: 'https://redux.js.org/',
+        title: 'Redux'
+    },
+    {
+        link: 'https://redux-saga.js.org/',
+        title: 'Redux Saga'
+    },
+    {
+        link: 'https://en.bem.info/',
+        title: 'BEM'
+    },
+    {
+        link: 'https://typescriptlang.org/',
+        title: 'Typescript'
+    },
+    {
+        link: 'https://webpack.js.org/',
+        title: 'Webpack'
+    }
+];
+
 const HomePresentation = () => {
     return (
         <div className={bem.block}>
@@ -15,24 +42,15 @@ const HomePresentation = () => {
                 </div>
 
                 <div className={bem.elem('list')}>
-                    <div className={bem.elem('item')}>
-                        <a href='https://reactjs.org/' className={bem.elem('link')}>React</a>
-                    </div>
-                    <div className={bem.elem('item')}>
-                        <a href='https://redux.js.org/' className={bem.elem('link')}>Redux</a>
-                    </div>
-                    <div className={bem.elem('item')}>
-                        <a href='https://redux-saga.js.org/' className={bem.elem('link')}>Redux Saga</a>
-                    </div>
-                    <div className={bem.elem('item')}>
-                        <a href='https://en.bem.info/' className={bem.elem('link')}>BEM</a>
-                    </div>
-                    <div className={bem.elem('item')}>
-                        <a href='https://www.typescriptlang.org/' className={bem.elem('link')}>Typescript</a>
-                    </div>
-                    <div className={bem.elem('item')}>
-                        <a href='https://webpack.js.org/' className={bem.elem('link')}>Webpack</a>
-                    </div>
+                    {
+                        linksTechnologies.map((item) => {
+                            return (
+                                <div key={item.link} className={bem.elem('item')}>
+                                    <a href={item.link} target={'_blank'} className={bem.elem('link')}>{item.title}</a>
+                                </div>
+                            );
+                        })
+                    }
                 </div>
             </div>
         </div>

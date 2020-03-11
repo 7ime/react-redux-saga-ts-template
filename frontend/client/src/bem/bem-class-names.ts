@@ -6,5 +6,6 @@ export enum EBemClassNames {
     scene = 'scene',
     app = 'app',
     homeScene = 'home-scene',
-    homePresentation = 'home-presentation'
+    homePresentation = 'home-presentation',
+    loaderWithInfo = 'loader-with-info'
 }

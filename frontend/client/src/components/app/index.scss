@@ -1,0 +1,19 @@
+.app {
+  .app__header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  &__loader-with-info-wrap {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .app__loader-with-info {
+    padding: 2rem;
+  }
+}

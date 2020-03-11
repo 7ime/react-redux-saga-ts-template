@@ -1,0 +1,27 @@
+@import '~@styles/variables/colors.scss';
+
+.loader-with-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__loader-wrap {
+
+  }
+
+  .loader-with-info__loader {
+    width: 5em;
+    height: 5em;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+
+  &__description {
+    margin-top: 0.5rem;
+    color: $grey_light_70;
+  }
+}
