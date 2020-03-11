@@ -7,7 +7,7 @@ const mode = 'production';
 process.env.NODE_ENV = mode;
 
 // helpers
-const {htmlWebpackPluginHelper, resolvePath} = require('./tools/helpers');
+const {htmlWebpackPluginHelper} = require('./tools/helpers');
 const commonConfig = require('./common.config');
 
 module.exports = function (webpackEnv, argv) {
@@ -39,7 +39,7 @@ module.exports = function (webpackEnv, argv) {
                 new TerserPlugin({
                     sourceMap: true,
                     cache: true,
-                    parallel: true, // Для увелечения скорости сборки,
+                    parallel: true,
                     terserOptions: {
                         ecma: 5
                     }

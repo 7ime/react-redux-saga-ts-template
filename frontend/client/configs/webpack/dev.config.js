@@ -4,7 +4,7 @@ const mode = 'development';
 process.env.NODE_ENV = mode;
 
 // helpers
-const {htmlWebpackPluginHelper, resolvePath, appDirectory} = require('./tools/helpers');
+const {htmlWebpackPluginHelper, resolvePath} = require('./tools/helpers');
 const commonConfig = require('./common.config');
 const paths = require('./tools/paths');
 
