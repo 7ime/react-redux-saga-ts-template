@@ -3,6 +3,7 @@ import './index.scss';
 import BemShaper from '../../../../../../bem/bem-shaper';
 import {EBemClassNames} from '../../../../../../bem/bem-class-names';
 import {NavLink} from 'react-router-dom';
+import {PATH_FORM_SCENE_ROUTES} from '../../../routes';
 
 const bem = new BemShaper(EBemClassNames.formSceneSidebarMenu);
 
@@ -23,12 +24,12 @@ const FormSceneSidebarMenu = (props: IProps) => {
     return (
         <div className={classNames}>
             <div className={bem.elem('list')}>
-                <NavLink to={'/form/example-1'}
+                <NavLink to={PATH_FORM_SCENE_ROUTES.firstExample}
                          exact
                          activeClassName={bem.is('active')}
                          className={bem.elem('link')}
                 >Form First Example</NavLink>
-                <NavLink to={'/form/example-2'}
+                <NavLink to={PATH_FORM_SCENE_ROUTES.secondExample}
                          exact
                          activeClassName={bem.is('active')}
                          className={bem.elem('link')}

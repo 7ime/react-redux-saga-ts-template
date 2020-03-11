@@ -5,6 +5,7 @@ import './index.scss';
 import BemShaper from '../../../bem/bem-shaper';
 import {EBemClassNames} from '../../../bem/bem-class-names';
 import {IRouter} from '../../../models/router-model';
+import {PATHS_ROOT_ROUTES} from '../../../navigation/routes';
 
 const bem = new BemShaper(EBemClassNames.header);
 
@@ -26,12 +27,12 @@ const Header = (props: IProps) => {
         <div className={classNames}>
             <div className={EBemClassNames.container}>
                 <div className={bem.elem('menu')}>
-                    <NavLink to={'/'}
+                    <NavLink to={PATHS_ROOT_ROUTES.homeScene}
                              exact
                              activeClassName={bem.is('active')}
                              className={bem.elem('link')}
                     >Home Page</NavLink>
-                    <NavLink to={'/form'}
+                    <NavLink to={PATHS_ROOT_ROUTES.formScene}
                              activeClassName={bem.is('active')}
                              className={bem.elem('link')}
                     >Form Page</NavLink>

@@ -8,14 +8,15 @@ import {EBemClassNames} from '../../../bem/bem-class-names';
 import FormSceneSidebarMenu from './components/containers/form-scene-sidebar-menu';
 import FormFirstExample from './components/containers/form-first-example';
 import FormSecondExample from './components/containers/form-second-example';
-
+import {IRouter} from '../../../models/router-model';
+import {PATH_FORM_SCENE_ROUTES} from './routes';
 const bem = new BemShaper(EBemClassNames.formScene);
 
-export default class FormScene extends React.Component {
-    componentWillUnmount(): void {
-        console.log('will unmount');
-    }
+interface IProps extends IRouter.Props {
 
+}
+
+export default class FormScene extends React.Component<IProps, never> {
     render() {
         const classNames = [
             EBemClassNames.scene,
@@ -36,9 +37,9 @@ export default class FormScene extends React.Component {
                             <div className={bem.elem('content')}>
                                 <div className={bem.elem('sub-scene')}>
                                     <Switch>
-                                        <Route path='/form/example-1' exact component={FormFirstExample}/>
-                                        <Route path='/form/example-2' exact component={FormSecondExample}/>
-                                        <Redirect from='*' to='/form/example-1' exact/>
+                                        <Route path={PATH_FORM_SCENE_ROUTES.firstExample} exact component={FormFirstExample}/>
+                                        <Route path={PATH_FORM_SCENE_ROUTES.secondExample} exact component={FormSecondExample}/>
+                                        <Redirect from='*' to={PATH_FORM_SCENE_ROUTES.firstExample} exact/>
                                     </Switch>
                                 </div>
                             </div>

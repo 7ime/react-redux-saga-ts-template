@@ -5,9 +5,7 @@ import {EBemClassNames} from '../../bem/bem-class-names';
 import LoaderWithInfo from '../presentational/loader-with-info';
 import './index.scss';
 import Header from '../containers/header';
-
-const HomeScene = React.lazy(() => import('../scenes/home-scene'));
-const FormScene = React.lazy(() => import('../scenes/form-scene'));
+import {INavigationRoute, rootRoutes} from '../../navigation/routes';
 
 const bem = new BemShaper(EBemClassNames.app);
 
@@ -26,13 +24,29 @@ export default class App extends React.Component {
     }
 
     render() {
+        const isLogged = true;
+
         return(
             <div className={bem.block}>
                 <Header mixes={['app']}/>
                 <React.Suspense fallback={this.getLoaderElem()}>
                     <Switch>
-                        <Route path='/' exact component={HomeScene}/>
-                        <Route path='/form' component={FormScene}/>
+                        {rootRoutes.map((route: INavigationRoute) => {
+                            const {
+                                component,
+                                path,
+                                exact,
+                                checkAuth = false
+                            } = route;
+
+                            if (!checkAuth || checkAuth && isLogged) {
+                                return (
+                                    <Route key={path} path={path} exact={exact} component={component}/>
+                                );
+                            }
+
+                            return null;
+                        })}
                         <Redirect from='*' to='/' exact/>
                     </Switch>
                 </React.Suspense>
