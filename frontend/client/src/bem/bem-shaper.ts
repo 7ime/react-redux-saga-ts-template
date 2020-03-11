@@ -1,7 +1,7 @@
-import {EBemAllowedClassNames} from './bem-allowed-class-names';
+import {EBemClassNames} from './bem-class-names';
 
 export default class BemShaper {
-    constructor(private blockName: EBemAllowedClassNames) {
+    constructor(private blockName: EBemClassNames) {
     }
 
     get block() {

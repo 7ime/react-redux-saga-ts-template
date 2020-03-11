@@ -1,9 +1,9 @@
 import * as React from 'react';
 import ILoader from '../../model';
-import {EBemAllowedClassNames} from '../../../../../bem/bem-allowed-class-names';
+import {EBemClassNames} from '../../../../../bem/bem-class-names';
 import BemShaper from '../../../../../bem/bem-shaper';
 
-const bem = new BemShaper(EBemAllowedClassNames.loader);
+const bem = new BemShaper(EBemClassNames.loader);
 
 const Loader = (props: ILoader.Props) => {
     const {mixes = [], mods = []} = props;

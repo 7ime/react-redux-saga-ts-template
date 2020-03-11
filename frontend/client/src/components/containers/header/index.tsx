@@ -3,10 +3,10 @@ import {NavLink, withRouter} from 'react-router-dom';
 
 import './index.scss';
 import BemShaper from '../../../bem/bem-shaper';
-import {EBemAllowedClassNames} from '../../../bem/bem-allowed-class-names';
+import {EBemClassNames} from '../../../bem/bem-class-names';
 import {IRouter} from '../../../models/router-model';
 
-const bem = new BemShaper(EBemAllowedClassNames.header);
+const bem = new BemShaper(EBemClassNames.header);
 
 interface IProps extends IRouter.Props {
     mixes?: string[];
@@ -24,7 +24,7 @@ const Header = (props: IProps) => {
 
     return (
         <div className={classNames}>
-            <div className={EBemAllowedClassNames.container}>
+            <div className={EBemClassNames.container}>
                 <div className={bem.elem('menu')}>
                     <NavLink to={'/'}
                              exact

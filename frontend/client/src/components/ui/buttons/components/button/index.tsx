@@ -2,10 +2,10 @@ import * as React from 'react';
 import IButton from '../../model';
 import Loader from '../../../loaders/components/loader';
 import BemShaper from '../../../../../bem/bem-shaper';
-import {EBemAllowedClassNames} from '../../../../../bem/bem-allowed-class-names';
+import {EBemClassNames} from '../../../../../bem/bem-class-names';
 import {ELoaderPosition} from '../../../../../constants/shared';
 
-const bem = new BemShaper(EBemAllowedClassNames.button);
+const bem = new BemShaper(EBemClassNames.button);
 
 const Button = (props: IButton.Props) => {
     const {

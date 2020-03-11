@@ -5,9 +5,9 @@ import HomeScene from './components/scenes/home-scene';
 import HooksScene from './components/scenes/hooks-scene';
 import Header from './components/containers/header';
 import BemShaper from './bem/bem-shaper';
-import {EBemAllowedClassNames} from './bem/bem-allowed-class-names';
+import {EBemClassNames} from './bem/bem-class-names';
 
-const bem = new BemShaper(EBemAllowedClassNames.app);
+const bem = new BemShaper(EBemClassNames.app);
 
 export default class App extends React.Component {
     render() {

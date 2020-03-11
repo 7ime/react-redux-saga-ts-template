@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import './index.scss';
 import BemShaper from '../../../../../../bem/bem-shaper';
-import {EBemAllowedClassNames} from '../../../../../../bem/bem-allowed-class-names';
+import {EBemClassNames} from '../../../../../../bem/bem-class-names';
 
-const bem = new BemShaper(EBemAllowedClassNames.homePresentation);
+const bem = new BemShaper(EBemClassNames.homePresentation);
 
 const HomePresentation = () => {
     return (
         <div className={bem.block}>
-            <div className={EBemAllowedClassNames.container}>
+            <div className={EBemClassNames.container}>
                 <div className={bem.elem('title')}>
                     This template uses:
                 </div>
