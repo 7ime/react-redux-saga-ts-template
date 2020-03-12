@@ -11,5 +11,7 @@ export enum EBemClassNames {
     formFirstExample = 'form-first-example',
     formSecondExample = 'form-second-example',
     homePresentation = 'home-presentation',
-    loaderWithInfo = 'loader-with-info'
+    loaderWithInfo = 'loader-with-info',
+    textfield = 'textfield',
+    scrollbar = 'scrollbar'
 }

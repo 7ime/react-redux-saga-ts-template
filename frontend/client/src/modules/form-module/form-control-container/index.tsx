@@ -9,7 +9,7 @@ interface IProps<T> {
 
 interface IInjectProps<T> {
     value: T[keyof T];
-    onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+    onChange(newValue: T[keyof T], event?: React.ChangeEvent): void;
     error?: IFormControlError;
 }
 
@@ -28,9 +28,7 @@ class FormControlContainer<T> extends React.PureComponent<IProps<T>, IState<T>> 
         this.props.form.bindForceUpdateComponentWithControl(this.props.controlName, this.forceUpdate.bind(this));
     }
 
-    onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue: T[keyof T] = event.target.value as any;
-
+    onChange = (newValue: T[keyof T], event?: React.ChangeEvent) => {
         this.props.form.updateControl(this.props.controlName, newValue);
 
         this.setState({

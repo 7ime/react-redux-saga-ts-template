@@ -10,6 +10,8 @@ import TextField from '../../../../../ui/textfield';
 import Button from '../../../../../ui/buttons/components/button';
 import BemShaper from '../../../../../../bem/bem-shaper';
 import {EBemClassNames} from '../../../../../../bem/bem-class-names';
+import Input from '../../../../../ui/textfields/components/input';
+import InputPassword from '../../../../../ui/textfields/components/input-password';
 
 const bem = new BemShaper(EBemClassNames.formFirstExample);
 
@@ -73,21 +75,23 @@ class FormFirstExample extends React.Component<IProps, {}> {
         return (
             <div className={classNames}>
                 <FormContainer form={this.form} onSubmit={this.onSubmit} className={bem.elem('form')}>
+                    <div className={bem.elem('form-title')}>Form Registration</div>
+
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'username'}>
-                            <TextField/>
+                            <Input label={'Username'} externalManage/>
                         </FormControlContainer>
                     </div>
 
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'password'}>
-                            <TextField/>
+                            <InputPassword label={'Password'} externalManage/>
                         </FormControlContainer>
                     </div>
 
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'repeatPassword'}>
-                            <TextField/>
+                            <InputPassword label={'Repeat password'} externalManage/>
                         </FormControlContainer>
                     </div>
 
