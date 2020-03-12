@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IForm, IFormControlError} from '../shared';
+import {IForm, IFormControlError, IFormExternalManage} from '../shared';
 
 interface IProps<T> {
     form: IForm<T>;
@@ -8,10 +8,7 @@ interface IProps<T> {
 }
 
 interface IInjectProps<T> {
-    externalManage: {
-        onUpdateValue(newValue: T[keyof T]): void;
-        value: T[keyof T];
-    };
+    externalManage: IFormExternalManage<T[keyof T]>;
     error?: IFormControlError;
 }
 

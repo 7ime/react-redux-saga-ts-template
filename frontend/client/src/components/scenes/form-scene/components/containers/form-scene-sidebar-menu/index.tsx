@@ -24,7 +24,7 @@ const links = [
         link: PATH_FORM_SCENE_ROUTES.thirdExample,
         title: 'Form Third Example'
     }
-]
+];
 
 const FormSceneSidebarMenu = (props: IProps) => {
     const {
@@ -45,7 +45,8 @@ const FormSceneSidebarMenu = (props: IProps) => {
                                  key={item.link}
                                  exact
                                  activeClassName={bem.is('active')}
-                                 className={bem.elem('link')}>{item.title}</NavLink>
+                                 className={bem.elem('link')}
+                        >{item.title}</NavLink>
                     );
                 })}
             </div>

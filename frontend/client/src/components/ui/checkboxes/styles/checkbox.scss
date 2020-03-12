@@ -1,0 +1,52 @@
+@import "~@styles/variables/colors.scss";
+@import "~@styles/variables/shared.scss";
+
+.checkbox {
+  position: relative;
+
+  &.is_disabled {
+    pointer-events: none;
+  }
+
+  &__content {
+    display: inline-flex;
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  &__description {
+    position: relative;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+
+  &__pseudo-control {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2px;
+    border: 1px solid $grey_light_30;
+    background-color: #fff;
+    background-position: center center;
+    background-size: 1.8rem;
+  }
+
+  &.is_checked {
+    .checkbox__pseudo-control {
+      background-image: url('~@images/icons/check.svg');
+    }
+  }
+
+  &__control {
+    display: none;
+  }
+
+  &__error-container {
+    margin-top: 0.5rem;
+    color: $red;
+  }
+}

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Maybe} from '../../../../toolbox/custom-types';
+import {IFormExternalManage} from '../../../../modules/form-module/shared';
 
 export namespace ITextField {
     export interface BaseProps {
@@ -8,10 +9,7 @@ export namespace ITextField {
         mods?: string[];
         mixes?: string[];
 
-        externalManage?: {
-            onUpdateValue(newValue: string): unknown;
-            value: Maybe<string>;
-        };
+        externalManage?: IFormExternalManage<string>;
 
         disabled?: boolean;
 

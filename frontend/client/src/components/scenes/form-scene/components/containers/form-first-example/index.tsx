@@ -11,6 +11,7 @@ import BemShaper from '../../../../../../bem/bem-shaper';
 import {EBemClassNames} from '../../../../../../bem/bem-class-names';
 import Input from '../../../../../ui/textfields/components/input';
 import InputPassword from '../../../../../ui/textfields/components/input-password';
+import Checkbox from '../../../../../ui/checkboxes/components/checkbox';
 
 const bem = new BemShaper(EBemClassNames.formFirstExample);
 
@@ -22,6 +23,7 @@ interface IControls {
     username: string;
     password: string;
     repeatPassword: string;
+    agree: boolean;
 }
 
 class FormFirstExample extends React.Component<IProps, {}> {
@@ -45,6 +47,12 @@ class FormFirstExample extends React.Component<IProps, {}> {
                 rules: [
                     FormValidatorsBuilder.required('This field is required'),
                     FormValidatorsBuilder.match('password', 'This field is not match with PASSWORD')
+                ]
+            },
+            agree: {
+                initValue: true,
+                rules: [
+                    FormValidatorsBuilder.required('This field is required')
                 ]
             }
         }
@@ -91,6 +99,14 @@ class FormFirstExample extends React.Component<IProps, {}> {
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'repeatPassword'}>
                             <InputPassword label={'Repeat password'}/>
+                        </FormControlContainer>
+                    </div>
+
+                    <div className={bem.elem('form-control')}>
+                        <FormControlContainer form={this.form} controlName={'agree'}>
+                            <Checkbox>
+                                I agree with <a href='#'>policies</a>.
+                            </Checkbox>
                         </FormControlContainer>
                     </div>
 

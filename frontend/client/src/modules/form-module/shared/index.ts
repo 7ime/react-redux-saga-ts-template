@@ -68,4 +68,9 @@ export interface IFormPatchValueConfig {
     emit: boolean;
 }
 
+export interface IFormExternalManage<T> {
+    onUpdateValue(newValue: T): unknown;
+    value: T;
+}
+
 export type IForm<T extends {}> = IFormBuilder.Impl<T>;
