@@ -29,4 +29,20 @@ export namespace ITextField {
     export interface InputPasswordProps extends InputBaseProps {
 
     }
+    
+    export interface InputInjectPropsBase {
+        innerRef: React.RefObject<HTMLInputElement>;
+        value: string;
+        onChange(event: React.ChangeEvent<HTMLInputElement>): unknown;
+        isFocused: boolean;
+        clearValue(): unknown;
+    }
+
+    export interface InputInjectProps extends InputInjectPropsBase {
+
+    }
+
+    export interface InputPasswordInjectProps extends InputInjectPropsBase {
+
+    }
 }

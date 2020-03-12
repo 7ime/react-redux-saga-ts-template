@@ -87,7 +87,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
 
             const {isBlur, isFocused, value} = this.state;
 
-            const injectProps = {
+            const injectProps: ITextField.InputInjectPropsBase = {
                 isFocused,
                 clearValue: this.clearValue,
                 innerRef: this.controlRef,

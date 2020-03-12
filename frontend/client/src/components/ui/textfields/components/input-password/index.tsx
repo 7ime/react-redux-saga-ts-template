@@ -6,12 +6,8 @@ import {ITextField} from '../../model';
 
 const bem = new BemShaper(EBemClassNames.textfield);
 
-interface IProps {
-    innerRef: React.RefObject<HTMLInputElement>;
-    value: string;
-    onChange(event: React.ChangeEvent<HTMLInputElement>): unknown;
-    isFocused: boolean;
-    clearValue(): unknown;
+interface IProps extends ITextField.InputPasswordInjectProps {
+
 }
 
 enum EIconTypePassword {
