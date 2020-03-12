@@ -1,4 +1,4 @@
-import {IFormControl, IFormControls, IFormSerialize} from '../shared';
+import {IFormControl, IFormControls, IFormPatchValueConfig, IFormSerialize} from '../shared';
 
 namespace IFormBuilder {
     export declare class Impl<T extends {}> {
@@ -16,6 +16,8 @@ namespace IFormBuilder {
         clearErrorsForControl(controlName: keyof T): void;
 
         bindForceUpdateComponentWithControl(controlName: keyof T, cb: () => void): void;
+
+        patchValue(values: Partial<T>, config?: IFormPatchValueConfig): void;
 
         onSubmit(): void;
     }

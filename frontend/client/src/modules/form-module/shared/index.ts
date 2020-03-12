@@ -64,4 +64,8 @@ export type IFormSerialize<T extends {}> = {
     [K in keyof T]: T[K];
 };
 
+export interface IFormPatchValueConfig {
+    emit: boolean;
+}
+
 export type IForm<T extends {}> = IFormBuilder.Impl<T>;

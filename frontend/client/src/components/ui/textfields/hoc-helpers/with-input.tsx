@@ -24,7 +24,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
         static getDerivedStateFromProps(props: T, state: IState) {
             if (props.externalManage) {
                 return {
-                    value: props.externalManage.value
+                    value: props.externalManage.value ? props.externalManage.value : ''
                 };
             } else {
                 return null;
@@ -82,6 +82,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
                 label,
                 mods = [],
                 mixes = [],
+                disabled = false,
                 error
             } = this.props;
 
@@ -100,6 +101,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
                 bem.mods(mods),
                 bem.mixes(mixes),
                 isFocused && bem.is('focused'),
+                disabled && bem.is('disabled'),
                 isBlur && !value && bem.is('blur'),
                 error && bem.is('error')
             ].join(' ').trim();

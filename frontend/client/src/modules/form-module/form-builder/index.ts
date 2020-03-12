@@ -4,7 +4,7 @@ import {
     EFormTypesControl, EValidatorsRules,
     IFormControls,
     IFormControl, IFormControlError,
-    IFormInitConfig, IFormRule, IFormSerialize,
+    IFormInitConfig, IFormRule, IFormSerialize, IFormPatchValueConfig,
 } from '../shared';
 import FormValidators from '../form-validators';
 import IFormValidatorsBuilder from '../form-validators-builder/model';
@@ -186,6 +186,29 @@ export default class FormBuilder<T> implements IFormBuilder.Impl<T> {
             case EValidatorsRules.required: {
                 return FormValidators.required(value);
             }
+        }
+    }
+
+    patchValue(values: Partial<T>, config?: IFormPatchValueConfig): void {
+        const keys: (keyof T)[] = Object.keys(values) as (keyof T)[];
+
+        keys.forEach((controlName: keyof T) => {
+            const {currentValue} = this._controls[controlName];
+
+            this._controls[controlName].currentValue = values[controlName] as T[keyof T];
+            this._controls[controlName].prevValue = currentValue;
+        });
+
+        this._validateForm();
+
+        keys.forEach((controlName: keyof T) => {
+            const forceUpdateCb = this._controls[controlName].forceUpdateCb;
+
+            forceUpdateCb && forceUpdateCb();
+        });
+
+        if (config && config.emit) {
+            this.additionalParams.updateFormCb(null);
         }
     }
 }

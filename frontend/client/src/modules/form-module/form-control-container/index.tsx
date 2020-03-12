@@ -38,6 +38,16 @@ class FormControlContainer<T> extends React.PureComponent<IProps<T>, IState<T>> 
         });
     };
 
+    componentDidUpdate() {
+        const control = this.props.form.getControl(this.props.controlName);
+
+        if (control.currentValue !== this.state.value) {
+            this.setState({
+                value: control.currentValue
+            });
+        }
+    }
+
     render() {
         const injectProps: IInjectProps<T> = {
             externalManage: {
@@ -47,6 +57,7 @@ class FormControlContainer<T> extends React.PureComponent<IProps<T>, IState<T>> 
         };
 
         const control = this.props.form.getControl(this.props.controlName);
+
         const showErrors = this.props.form.showErrors;
 
         if (showErrors && control.rules && control.rules.length) {

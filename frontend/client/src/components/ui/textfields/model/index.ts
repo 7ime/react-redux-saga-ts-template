@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Maybe} from '../../../../toolbox/custom-types';
 
 export namespace ITextField {
     export interface BaseProps {
@@ -9,8 +10,10 @@ export namespace ITextField {
 
         externalManage?: {
             onUpdateValue(newValue: string): unknown;
-            value: string
+            value: Maybe<string>;
         };
+
+        disabled?: boolean;
 
         error?: string | null;
     }

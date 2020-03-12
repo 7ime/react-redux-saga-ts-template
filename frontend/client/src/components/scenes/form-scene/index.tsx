@@ -10,6 +10,7 @@ import FormFirstExample from './components/containers/form-first-example';
 import FormSecondExample from './components/containers/form-second-example';
 import {IRouter} from '../../../models/router-model';
 import {PATH_FORM_SCENE_ROUTES} from './routes';
+import FormThirdExample from './components/containers/form-third-example';
 const bem = new BemShaper(EBemClassNames.formScene);
 
 interface IProps extends IRouter.Props {
@@ -39,6 +40,7 @@ export default class FormScene extends React.Component<IProps, never> {
                                     <Switch>
                                         <Route path={PATH_FORM_SCENE_ROUTES.firstExample} exact component={FormFirstExample}/>
                                         <Route path={PATH_FORM_SCENE_ROUTES.secondExample} exact component={FormSecondExample}/>
+                                        <Route path={PATH_FORM_SCENE_ROUTES.thirdExample} exact component={FormThirdExample}/>
                                         <Redirect from='*' to={PATH_FORM_SCENE_ROUTES.firstExample} exact/>
                                     </Switch>
                                 </div>

@@ -23,7 +23,7 @@ class Textarea extends React.Component<ITextField.TextareaProps, IState> {
     static getDerivedStateFromProps(props: ITextField.TextareaProps, state: IState) {
         if (props.externalManage) {
             return {
-                value: props.externalManage.value
+                value: props.externalManage.value ? props.externalManage.value : ''
             };
         } else {
             return null;

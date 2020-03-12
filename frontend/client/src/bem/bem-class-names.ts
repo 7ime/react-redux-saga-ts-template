@@ -10,6 +10,7 @@ export enum EBemClassNames {
     formSceneSidebarMenu = 'form-scene-sidebar-menu',
     formFirstExample = 'form-first-example',
     formSecondExample = 'form-second-example',
+    formThirdExample = 'form-third-example',
     homePresentation = 'home-presentation',
     loaderWithInfo = 'loader-with-info',
     textfield = 'textfield',

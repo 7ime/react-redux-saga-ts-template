@@ -11,7 +11,6 @@ import {EFormShowErrors, IFormControl} from '../../../modules/form-module/shared
 import FormBuilder from '../../../modules/form-module/form-builder';
 import FormValidatorsBuilder from '../../../modules/form-module/form-validators-builder';
 import FormControlContainer from '../../../modules/form-module/form-control-container';
-import TextField from '../../ui/textfield';
 import FormContainer from '../../../modules/form-module/form-container';
 import Button from '../../ui/buttons/components/button';
 import {IPeople} from '../../../entities/people.entity';
@@ -75,23 +74,6 @@ class SwapiInfo extends React.Component<IProps, {}> {
         return (
             <div className='swapi-info-component'>
                 <FormContainer form={this.form} onSubmit={this.onSubmit} className={'form'}>
-                    <div className={'form-control'}>
-                        <FormControlContainer form={this.form} controlName={'username'}>
-                            <TextField/>
-                        </FormControlContainer>
-                    </div>
-
-                    <div className={'form-control'}>
-                        <FormControlContainer form={this.form} controlName={'password'}>
-                            <TextField/>
-                        </FormControlContainer>
-                    </div>
-
-                    <div className={'form-control'}>
-                        <FormControlContainer form={this.form} controlName={'repeatPassword'}>
-                            <TextField/>
-                        </FormControlContainer>
-                    </div>
 
                     <Button type={'submit'}
                             mixes={['form']}

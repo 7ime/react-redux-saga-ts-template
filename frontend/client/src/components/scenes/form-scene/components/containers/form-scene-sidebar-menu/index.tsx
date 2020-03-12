@@ -11,6 +11,21 @@ interface IProps {
     mixes?: string[];
 }
 
+const links = [
+    {
+        link: PATH_FORM_SCENE_ROUTES.firstExample,
+        title: 'Form First Example'
+    },
+    {
+        link: PATH_FORM_SCENE_ROUTES.secondExample,
+        title: 'Form Second Example'
+    },
+    {
+        link: PATH_FORM_SCENE_ROUTES.thirdExample,
+        title: 'Form Third Example'
+    }
+]
+
 const FormSceneSidebarMenu = (props: IProps) => {
     const {
         mixes = []
@@ -24,16 +39,15 @@ const FormSceneSidebarMenu = (props: IProps) => {
     return (
         <div className={classNames}>
             <div className={bem.elem('list')}>
-                <NavLink to={PATH_FORM_SCENE_ROUTES.firstExample}
-                         exact
-                         activeClassName={bem.is('active')}
-                         className={bem.elem('link')}
-                >Form First Example</NavLink>
-                <NavLink to={PATH_FORM_SCENE_ROUTES.secondExample}
-                         exact
-                         activeClassName={bem.is('active')}
-                         className={bem.elem('link')}
-                >Form Second Example</NavLink>
+                {links.map((item) => {
+                    return (
+                        <NavLink to={item.link}
+                                 key={item.link}
+                                 exact
+                                 activeClassName={bem.is('active')}
+                                 className={bem.elem('link')}>{item.title}</NavLink>
+                    );
+                })}
             </div>
         </div>
     );

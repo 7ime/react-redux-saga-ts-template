@@ -6,7 +6,6 @@ import {EFormShowErrors, IFormControl} from '../../../../../../modules/form-modu
 import FormValidatorsBuilder from '../../../../../../modules/form-module/form-validators-builder';
 import FormContainer from '../../../../../../modules/form-module/form-container';
 import FormControlContainer from '../../../../../../modules/form-module/form-control-container';
-import TextField from '../../../../../ui/textfield';
 import Button from '../../../../../ui/buttons/components/button';
 import BemShaper from '../../../../../../bem/bem-shaper';
 import {EBemClassNames} from '../../../../../../bem/bem-class-names';
