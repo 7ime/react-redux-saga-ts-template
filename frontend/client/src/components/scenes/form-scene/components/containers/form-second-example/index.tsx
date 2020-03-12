@@ -10,6 +10,8 @@ import TextField from '../../../../../ui/textfield';
 import Button from '../../../../../ui/buttons/components/button';
 import BemShaper from '../../../../../../bem/bem-shaper';
 import {EBemClassNames} from '../../../../../../bem/bem-class-names';
+import Input from '../../../../../ui/textfields/components/input';
+import Textarea from '../../../../../ui/textfields/components/textarea';
 
 const bem = new BemShaper(EBemClassNames.formSecondExample);
 
@@ -20,6 +22,7 @@ interface IProps {
 interface IControls {
     username: string;
     email: string;
+    description: string;
 }
 
 class FormSecondExample extends React.Component<IProps, {}> {
@@ -33,6 +36,13 @@ class FormSecondExample extends React.Component<IProps, {}> {
                 ]
             },
             email: {
+                initValue: '',
+                rules: [
+                    FormValidatorsBuilder.required('This field is required'),
+                    FormValidatorsBuilder.email('Enter right email'),
+                ]
+            },
+            description: {
                 initValue: '',
                 rules: [
                     FormValidatorsBuilder.required('This field is required')
@@ -65,15 +75,23 @@ class FormSecondExample extends React.Component<IProps, {}> {
         return (
             <div className={classNames}>
                 <FormContainer form={this.form} onSubmit={this.onSubmit} className={bem.elem('form')}>
+                    <div className={bem.elem('form-title')}>User info</div>
+
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'username'}>
-                            <TextField/>
+                            <Input label={'Username'}/>
                         </FormControlContainer>
                     </div>
 
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'email'}>
-                            <TextField/>
+                            <Input label={'Email'}/>
+                        </FormControlContainer>
+                    </div>
+
+                    <div className={bem.elem('form-control')}>
+                        <FormControlContainer form={this.form} controlName={'description'}>
+                            <Textarea label={'Description'}/>
                         </FormControlContainer>
                     </div>
 

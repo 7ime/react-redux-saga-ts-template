@@ -1,3 +1,26 @@
-.form-second-example {
+@import "~@styles/variables/colors.scss";
+@import "~@styles/variables/shared.scss";
 
+.form-second-example {
+  &__form {
+    background-color: #fff;
+    padding: 3rem 2.5rem;
+    border-radius: $bdrs;
+    border: 1px solid $grey_light_30;
+  }
+
+  &__form-control {
+    margin-bottom: 2rem;
+  }
+
+  &__form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .form-first-example__button {
+    margin-top: 1.5rem;
+    min-width: 20rem;
+  }
 }
