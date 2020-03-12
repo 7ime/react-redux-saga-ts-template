@@ -4,12 +4,13 @@ export namespace ITextField {
     export interface BaseProps {
         label: string;
 
-        onChange?(newValue: string, event?: React.ChangeEvent): unknown;
-
         mods?: string[];
         mixes?: string[];
 
-        externalManage?: boolean;
+        externalManage?: {
+            onUpdateValue(newValue: string): unknown;
+            value: string
+        };
 
         error?: string | null;
     }

@@ -8,8 +8,10 @@ interface IProps<T> {
 }
 
 interface IInjectProps<T> {
-    value: T[keyof T];
-    onChange(newValue: T[keyof T], event?: React.ChangeEvent): void;
+    externalManage: {
+        onUpdateValue(newValue: T[keyof T]): void;
+        value: T[keyof T];
+    };
     error?: IFormControlError;
 }
 
@@ -28,7 +30,7 @@ class FormControlContainer<T> extends React.PureComponent<IProps<T>, IState<T>> 
         this.props.form.bindForceUpdateComponentWithControl(this.props.controlName, this.forceUpdate.bind(this));
     }
 
-    onChange = (newValue: T[keyof T], event?: React.ChangeEvent) => {
+    onUpdateValue = (newValue: T[keyof T]) => {
         this.props.form.updateControl(this.props.controlName, newValue);
 
         this.setState({
@@ -38,8 +40,10 @@ class FormControlContainer<T> extends React.PureComponent<IProps<T>, IState<T>> 
 
     render() {
         const injectProps: IInjectProps<T> = {
-            value: this.state.value,
-            onChange: this.onChange
+            externalManage: {
+                value: this.state.value,
+                onUpdateValue: this.onUpdateValue
+            }
         };
 
         const control = this.props.form.getControl(this.props.controlName);

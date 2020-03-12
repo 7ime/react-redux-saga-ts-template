@@ -79,19 +79,19 @@ class FormFirstExample extends React.Component<IProps, {}> {
 
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'username'}>
-                            <Input label={'Username'} externalManage/>
+                            <Input label={'Username'}/>
                         </FormControlContainer>
                     </div>
 
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'password'}>
-                            <InputPassword label={'Password'} externalManage/>
+                            <InputPassword label={'Password'}/>
                         </FormControlContainer>
                     </div>
 
                     <div className={bem.elem('form-control')}>
                         <FormControlContainer form={this.form} controlName={'repeatPassword'}>
-                            <InputPassword label={'Repeat password'} externalManage/>
+                            <InputPassword label={'Repeat password'}/>
                         </FormControlContainer>
                     </div>
 

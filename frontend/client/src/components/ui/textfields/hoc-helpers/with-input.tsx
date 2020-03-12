@@ -24,7 +24,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
         static getDerivedStateFromProps(props: T, state: IState) {
             if (props.externalManage) {
                 return {
-                    value: props.value
+                    value: props.externalManage.value
                 };
             } else {
                 return null;
@@ -44,7 +44,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
             });
         };
 
-        handlerBlur = () => {
+        handleBlur = () => {
             const textfieldNode = this.controlRef.current;
 
             let isBlur = true;
@@ -59,7 +59,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
             });
         };
 
-        handlerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             this.setValue(event.target.value);
         };
 
@@ -68,8 +68,8 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
         };
 
         private setValue = (newValue: string) => {
-            if (this.props.externalManage && this.props.onChange) {
-                this.props.onChange(newValue);
+            if (this.props.externalManage) {
+                this.props.externalManage.onUpdateValue(newValue);
             } else {
                 this.setState({
                     value: newValue
@@ -92,7 +92,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
                 clearValue: this.clearValue,
                 innerRef: this.controlRef,
                 value: value,
-                onChange: this.handlerChange,
+                onChange: this.handleChange,
             };
 
             const classNames = [
@@ -115,7 +115,7 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
                             ].join(' ').trim()
                         }
                         onFocus={this.handleFocus}
-                        onBlur={this.handlerBlur}
+                        onBlur={this.handleBlur}
                         tabIndex={0}
                     >
                         <Wrapped {...injectProps}/>
