@@ -4,8 +4,6 @@ import {EBemClassNames} from '../../../../../bem/bem-class-names';
 import BemShaper from '../../../../../bem/bem-shaper';
 import {v4 as uuid} from 'uuid';
 
-const uuidCheckbox = uuid();
-
 const bem = new BemShaper(EBemClassNames.checkbox);
 
 interface IState {
@@ -60,6 +58,8 @@ class Checkbox extends React.PureComponent<ICheckbox.Props, IState> {
             error && bem.is('error'),
             disabled && bem.is('disabled')
         ].join(' ').trim();
+
+        const uuidCheckbox = uuid();
 
         return (
             <div className={classNames}>

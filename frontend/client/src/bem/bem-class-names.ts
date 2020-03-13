@@ -6,6 +6,7 @@ export enum EBemClassNames {
     scene = 'scene',
     checkbox = 'checkbox',
     radio = 'radio',
+    radioGroup = 'radio-group',
     app = 'app',
     homeScene = 'home-scene',
     formScene = 'form-scene',

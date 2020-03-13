@@ -1,0 +1,15 @@
+@import "~@styles/variables/colors.scss";
+@import "~@styles/variables/shared.scss";
+
+.radio-group {
+  position: relative;
+
+  &__control {
+    margin: 0.5rem;
+  }
+
+  &__error-container {
+    margin-top: 0.5rem;
+    color: $red;
+  }
+}

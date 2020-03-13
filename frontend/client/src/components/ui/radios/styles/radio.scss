@@ -1,0 +1,62 @@
+@import "~@styles/variables/colors.scss";
+@import "~@styles/variables/shared.scss";
+
+.radio {
+  position: relative;
+
+  &.is_disabled {
+    pointer-events: none;
+  }
+
+  &__content {
+    display: inline-flex;
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  &__description {
+    position: relative;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+
+  &__pseudo-control {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid $grey_light_30;
+    background-color: #fff;
+    background-position: center center;
+    background-size: 1.8rem;
+
+    &:before {
+      position: absolute;
+      opacity: 0;
+      content: '';
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: $primary;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &.is_checked {
+    .radio__pseudo-control {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__control {
+    display: none;
+  }
+}

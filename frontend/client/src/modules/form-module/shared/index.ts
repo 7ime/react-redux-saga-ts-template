@@ -17,7 +17,8 @@ export enum EFormShowErrors {
 
 export enum EFormTypesControl {
     textfield = 'textfield',
-    checkbox = 'checkbox'
+    checkbox = 'checkbox',
+    radioGroup = 'radioGroup',
 }
 
 export type IFormRule<T = undefined> = {

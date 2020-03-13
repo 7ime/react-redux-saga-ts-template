@@ -2,7 +2,7 @@ import * as React from 'react';
 import {toNumber} from 'lodash';
 import './index.scss';
 import FormBuilder from '../../../../../../modules/form-module/form-builder';
-import {EFormShowErrors, IForm, IFormControl} from '../../../../../../modules/form-module/shared';
+import {EFormShowErrors, EFormTypesControl, IForm, IFormControl} from '../../../../../../modules/form-module/shared';
 import FormValidatorsBuilder from '../../../../../../modules/form-module/form-validators-builder';
 import FormContainer from '../../../../../../modules/form-module/form-container';
 import FormControlContainer from '../../../../../../modules/form-module/form-control-container';
@@ -13,8 +13,12 @@ import Input from '../../../../../ui/textfields/components/input';
 import {isNumber} from '../../../../../../helpers/is-number';
 import {delay} from '../../../../../../helpers/delay';
 import {ELoaderPosition} from '../../../../../../constants/shared';
+import {IRadio} from '../../../../../ui/radios/model';
+import RadioGroup from '../../../../../ui/radios/components/radio-group';
 
 const bem = new BemShaper(EBemClassNames.formThirdExample);
+
+type ITypeOperation = '+' | '*' | '-' | '/';
 
 interface IState {
     isDisabledSubmit: boolean;
@@ -26,9 +30,10 @@ interface IProps {
 }
 
 interface IControls {
-    sum: '';
+    calcResult: '';
     firstValue: string;
     secondValue: string;
+    typeOperation: ITypeOperation | null;
 }
 
 class FormThirdExample extends React.Component<IProps, IState> {
@@ -40,7 +45,7 @@ class FormThirdExample extends React.Component<IProps, IState> {
     form: IForm<IControls> = new FormBuilder<IControls>({
         showErrors: EFormShowErrors.immediately,
         controls: {
-            sum: {
+            calcResult: {
                 initValue: ''
             },
             firstValue: {
@@ -55,24 +60,56 @@ class FormThirdExample extends React.Component<IProps, IState> {
                     FormValidatorsBuilder.required('This field is required')
                 ]
             },
+            typeOperation: {
+                initValue: null,
+                typeControl: EFormTypesControl.radioGroup,
+                rules: [
+                    FormValidatorsBuilder.required('This field is required')
+                ]
+            }
         }
     }, {
         updateFormCb: this.updateForm.bind(this)
     });
 
     updateForm(initiatorControl: IFormControl<IControls> | null): void {
-        if (initiatorControl && (initiatorControl.name === 'firstValue' || initiatorControl.name === 'secondValue')) {
-            const {firstValue, secondValue} = this.form.controls;
+        if (initiatorControl && (
+            initiatorControl.name === 'firstValue' ||
+            initiatorControl.name === 'secondValue' ||
+            initiatorControl.name === 'typeOperation'
+        )) {
+            const {firstValue, secondValue, typeOperation} = this.form.controls;
 
             if (isNumber(firstValue.currentValue) && isNumber(secondValue.currentValue)) {
-                const sum = toNumber(firstValue.currentValue) + toNumber(secondValue.currentValue);
+                let result: number = '' as any;
+
+                switch (typeOperation.currentValue) {
+                    case '*': {
+                        result = toNumber(firstValue.currentValue) * toNumber(secondValue.currentValue);
+                        break;
+                    }
+                    case '/': {
+                        result = toNumber(firstValue.currentValue) / toNumber(secondValue.currentValue);
+                        break;
+                    }
+                    case '-': {
+                        result = toNumber(firstValue.currentValue) - toNumber(secondValue.currentValue);
+                        break;
+                    }
+                    case '+': {
+                        result = toNumber(firstValue.currentValue) + toNumber(secondValue.currentValue);
+                        break;
+                    }
+                    default:
+                        break;
+                }
 
                 this.form.patchValue({
-                    sum: sum as any
+                    calcResult: result.toString() as any
                 }, {emit: false});
             } else {
                 this.form.patchValue({
-                    sum: ''
+                    calcResult: ''
                 }, {emit: false});
             }
         }
@@ -110,6 +147,13 @@ class FormThirdExample extends React.Component<IProps, IState> {
             bem.mixes(mixes)
         ].join(' ').trim();
 
+        const radioGroupValues: IRadio.RadioGroupValue<ITypeOperation>[] = [
+            {value: '+', label: 'Plus'},
+            {value: '/', label: 'Divided by'},
+            {value: '*', label: 'Times'},
+            {value: '-', label: 'Minus'}
+        ];
+
         return (
             <div className={classNames}>
                 <FormContainer form={this.form} onSubmit={this.onSubmit} className={bem.elem('form')}>
@@ -117,8 +161,8 @@ class FormThirdExample extends React.Component<IProps, IState> {
 
                     <div className={bem.elem('form-controls')}>
                         <div className={bem.elem('form-control')}>
-                            <FormControlContainer form={this.form} controlName={'sum'}>
-                                <Input label={'Sum'} disabled/>
+                            <FormControlContainer form={this.form} controlName={'calcResult'}>
+                                <Input label={'Calc result'} disabled/>
                             </FormControlContainer>
                         </div>
                     </div>
@@ -133,6 +177,18 @@ class FormThirdExample extends React.Component<IProps, IState> {
                         <div className={bem.elem('form-control')}>
                             <FormControlContainer form={this.form} controlName={'secondValue'}>
                                 <Input label={'Second Value'}/>
+                            </FormControlContainer>
+                        </div>
+                    </div>
+
+                    <div className={bem.elem('form-controls')}>
+                        <div className={bem.elem('form-control')}>
+                            <FormControlContainer form={this.form} controlName={'typeOperation'}>
+                                <RadioGroup values={radioGroupValues}
+                                            controlName={'typeOperation'}
+                                            defaultValue={'/'}
+                                            defaultChecked={true}
+                                />
                             </FormControlContainer>
                         </div>
                     </div>

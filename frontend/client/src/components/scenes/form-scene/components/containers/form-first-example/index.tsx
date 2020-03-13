@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './index.scss';
 import FormBuilder from '../../../../../../modules/form-module/form-builder';
-import {EFormShowErrors, IFormControl} from '../../../../../../modules/form-module/shared';
+import {EFormShowErrors, EFormTypesControl, IFormControl} from '../../../../../../modules/form-module/shared';
 import FormValidatorsBuilder from '../../../../../../modules/form-module/form-validators-builder';
 import FormContainer from '../../../../../../modules/form-module/form-container';
 import FormControlContainer from '../../../../../../modules/form-module/form-control-container';
@@ -51,6 +51,7 @@ class FormFirstExample extends React.Component<IProps, {}> {
             },
             agree: {
                 initValue: true,
+                typeControl: EFormTypesControl.checkbox,
                 rules: [
                     FormValidatorsBuilder.required('This field is required')
                 ]
