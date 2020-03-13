@@ -26,9 +26,9 @@ const withInput = <T extends ITextField.InputBaseProps>(Wrapped: any) => {
                 return {
                     value: props.externalManage.value ? props.externalManage.value : ''
                 };
-            } else {
-                return null;
             }
+
+            return null;
         }
 
         handleFocus = () => {

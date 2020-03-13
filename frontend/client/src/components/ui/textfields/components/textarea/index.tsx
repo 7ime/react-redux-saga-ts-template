@@ -25,9 +25,9 @@ class Textarea extends React.Component<ITextField.TextareaProps, IState> {
             return {
                 value: props.externalManage.value ? props.externalManage.value : ''
             };
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     handleFocus = () => {

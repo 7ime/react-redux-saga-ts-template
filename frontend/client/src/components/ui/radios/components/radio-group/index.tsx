@@ -3,7 +3,6 @@ import {IRadio} from '../../model';
 import BemShaper from '../../../../../bem/bem-shaper';
 import {EBemClassNames} from '../../../../../bem/bem-class-names';
 import Radio from '../radio';
-import {ICheckbox} from '../../../checkboxes/model';
 
 const bem = new BemShaper(EBemClassNames.radioGroup);
 
@@ -15,17 +14,18 @@ interface IState {
 export default class RadioGroup extends React.PureComponent<IRadio.RadioGroupProps, IState> {
     state = {
         value: this.props.defaultValue ? this.props.defaultValue : '',
-        checked: this.props.defaultChecked ? this.props.defaultChecked : false
+        checked: !!this.props.defaultValue
     };
 
-    static getDerivedStateFromProps(props: ICheckbox.Props, state: IState) {
+    static getDerivedStateFromProps(props: IRadio.RadioGroupProps, state: IState): Partial<IState> | null {
         if (props.externalManage) {
             return {
-                value: props.externalManage.value ? props.externalManage.value : ''
+                value: props.externalManage.value ? props.externalManage.value : '',
+                checked: !!props.externalManage.value
             };
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,10 +34,6 @@ export default class RadioGroup extends React.PureComponent<IRadio.RadioGroupPro
 
         if (this.props.externalManage) {
             this.props.externalManage.onUpdateValue(value);
-
-            this.setState({
-                checked,
-            });
         } else {
             this.setState({
                 checked,

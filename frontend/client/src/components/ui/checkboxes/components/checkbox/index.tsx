@@ -20,9 +20,9 @@ class Checkbox extends React.PureComponent<ICheckbox.Props, IState> {
             return {
                 value: props.externalManage.value ? props.externalManage.value : false
             };
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

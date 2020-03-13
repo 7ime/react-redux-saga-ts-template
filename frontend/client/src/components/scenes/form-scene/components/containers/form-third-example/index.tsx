@@ -187,7 +187,6 @@ class FormThirdExample extends React.Component<IProps, IState> {
                                 <RadioGroup values={radioGroupValues}
                                             controlName={'typeOperation'}
                                             defaultValue={'/'}
-                                            defaultChecked={true}
                                 />
                             </FormControlContainer>
                         </div>
