@@ -4,7 +4,7 @@ module.exports = {
     "^.+\\.tsx?$": "ts-jest",
     "^.+\\.svg$": "<rootDir>/svgTransform.js"
   },
-  "testRegex": "(/tests/.*|(\\.|/)(uitest))\\.tsx?$",
+  "testRegex": "(/tests/.*|(\\.|/)(spec))\\.tsx?$",
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
   "moduleNameMapper": {
     "^.+\\.(css|less|scss)$": "identity-obj-proxy"

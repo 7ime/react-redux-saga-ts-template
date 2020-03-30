@@ -3,3 +3,8 @@ export enum ELoaderPosition {
     center = 'center',
     right = 'right'
 }
+
+export enum EPosition {
+    AFTER = 'AFTER',
+    BEFORE = 'BEFORE'
+}

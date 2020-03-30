@@ -10,7 +10,7 @@ import Button from '../../../../../ui/buttons/components/button';
 import BemShaper from '../../../../../../bem/bem-shaper';
 import {EBemClassNames} from '../../../../../../bem/bem-class-names';
 import Input from '../../../../../ui/textfields/components/input';
-import {isNumber} from '../../../../../../helpers/is-number';
+import {isNumber} from '../../../../../../helpers/is-number/is-number';
 import {delay} from '../../../../../../helpers/delay';
 import {ELoaderPosition} from '../../../../../../constants/shared';
 import {IRadio} from '../../../../../ui/radios/model';
