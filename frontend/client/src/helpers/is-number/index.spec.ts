@@ -1,4 +1,4 @@
-import {isNumber} from './is-number';
+import {isNumber} from './index';
 
 describe('testing fn isNumber', () => {
     it('testing a number as a string', () => {

@@ -4,6 +4,8 @@ import {IPeople} from '../../entities/people.entity';
 const instanceService = new PeopleService();
 
 describe('testing peopleService', () => {
+    jest.setTimeout(10000);
+
     const peopleMatcher: IPeople.ModelDTO = {
         name: expect.anything(),
         height: expect.anything(),

@@ -1,5 +1,5 @@
-import {insertByPosition} from './insert-by-position';
 import {EPosition} from '../../constants/shared';
+import {insertByPosition} from './index';
 
 describe('testing fn insertByPosition', () => {
     const testID = 99;
