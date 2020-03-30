@@ -2,11 +2,7 @@ module.exports = {
     "collectCoverageFrom": [
         "src/**/*.{js,jsx,ts,tsx}",
         "!src/**/*.d.ts",
-        "!src/constants/**",
-        "!src/entities/**",
-        "!src/models/**",
-        "!src/toolbox/**",
-        "!src/environment/**",
+        "!src/toolbox/**"
     ],
     "roots": [
         "<rootDir>/src",
