@@ -11,7 +11,9 @@ module.exports = {
         "<rootDir>/src/**/*.{spec,test}.{ts,tsx}",
     ],
     "transform": {
-        "^.+\\.tsx?$": "ts-jest",
+        "^.+\\.(js|jsx|ts|tsx)$": "ts-jest",
+        "^.+\\.css$": "<rootDir>/configs/jest/cssTransform.js",
+        "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/configs/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
         "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
